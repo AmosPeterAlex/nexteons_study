@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
@@ -83,41 +83,57 @@ class _MacViewState extends State<MacView> {
         "title": "First Name",
         "controller": firstNameController,
         "validation": nameValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
       {
         "title": "Last Name",
         "controller": secondNameController,
         "validation": addValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
       {
         "title": "Email Address",
         "controller": emailController,
         "validation": emailValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
       {
         "title": "User ID",
         "controller": userIdController,
         "validation": idValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
       {
         "title": "District",
         "controller": districtController,
         "validation": addValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
       {
         "title": "Phone No",
         "controller": phoneNoController,
         "validation": addValidation,
+        "input_format": [FilteringTextInputFormatter.digitsOnly],
+        "keyboard_type": TextInputType.number
       },
       {
         "title": "Pincode",
         "controller": pinCodeController,
         "validation": addValidation,
+        "input_format": [FilteringTextInputFormatter.digitsOnly],
+        "keyboard_type": TextInputType.number
       },
       {
         "title": "Country",
         "controller": countryController,
         "validation": addValidation,
+        "input_format": null,
+        "keyboard_type": null
       },
     ];
     return Scaffold(
@@ -188,6 +204,11 @@ class _MacViewState extends State<MacView> {
                               TextFieldWidget(
                                 controller: controller,
                                 validation: validator,
+                                keyBoardType: allTextFields[index]
+                                    ["keyboard_type"] as TextInputType?,
+                                inputFormatters: allTextFields[index]
+                                        ["input_format"]
+                                    as List<TextInputFormatter>?,
                               )
                             ],
                           );

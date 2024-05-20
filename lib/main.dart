@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nexteons_internship_task/screens/iPhone/iPhone_view.dart';
 import 'package:nexteons_internship_task/screens/macBook/mac_view.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
-      home: MacView(),
+      home: IPhoneView(),
     );
   }
 }
