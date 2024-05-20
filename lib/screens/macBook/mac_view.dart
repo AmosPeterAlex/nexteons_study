@@ -135,14 +135,24 @@ class _MacViewState extends State<MacView> {
                 )),
           ),
           Padding(
-            padding: EdgeInsets.only(top: size.height * .06),
+            padding: EdgeInsets.only(
+              top: size.height * .06,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "BASIC DETAILS",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: size.width * .045,
+                    ),
+                    Text(
+                      "BASIC DETAILS",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    ),
+                  ],
                 ),
                 Form(
                   key: formKey,
