@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/controller/controller.dart';
+import 'package:nexteons_internship_task/screens/macBook/result.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
@@ -21,6 +24,7 @@ class _MacViewState extends State<MacView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    final getXController = Get.put(DetailController());
 
     return Scaffold(
       body: Row(
@@ -128,11 +132,55 @@ class _MacViewState extends State<MacView> {
                           onPressed: () {
                             final valid = formKey.currentState?.validate();
                             if (valid == true) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Good"),
-                                backgroundColor: Colors.green,
-                              ));
+                              String firstName =
+                                  allTextFields[0]['controller'].text;
+                              String secondName =
+                                  allTextFields[1]['controller'].text;
+                              String email =
+                                  allTextFields[2]['controller'].text;
+                              int userId = int.tryParse(
+                                      allTextFields[3]['controller'].text) ??
+                                  0;
+                              String district =
+                                  allTextFields[4]['controller'].text;
+                              int phoneNo = int.tryParse(
+                                      allTextFields[5]['controller'].text) ??
+                                  0;
+                              int pinCode = int.tryParse(
+                                      allTextFields[6]['controller'].text) ??
+                                  0;
+                              String country =
+                                  allTextFields[7]['controller'].text;
+                              getXController.addStudent(context,
+                                  firstName: firstName,
+                                  secondName: secondName,
+                                  mail: email,
+                                  userId: userId,
+                                  dist: district,
+                                  phone: phoneNo,
+                                  pin: pinCode,
+                                  country: country);
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ResultPage(
+                                    firstName: firstName,
+                                    lastName: secondName,
+                                    email: email,
+                                    userId: userId,
+                                    district: district,
+                                    phoneNo: phoneNo,
+                                    pinCode: pinCode,
+                                    country: country,
+                                  ),
+                                ),
+                              );
+                              // ScaffoldMessenger.of(context)
+                              //     .showSnackBar(const SnackBar(
+                              //   content: Text("Good"),
+                              //   backgroundColor: Colors.green,
+                              // ));
                             } else {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
