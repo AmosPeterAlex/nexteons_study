@@ -154,7 +154,7 @@ class _IPhoneViewState extends State<IPhoneView> {
             children: [
               Text(
                 "BASIC DETAILS",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
               ),
               Form(
                 key: formKey,
