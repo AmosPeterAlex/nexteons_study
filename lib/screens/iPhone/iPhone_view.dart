@@ -45,16 +45,6 @@ class _IPhoneViewState extends State<IPhoneView> {
     return null;
   }
 
-  // String? emailValidation(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return null;
-  //   }
-  //   if (!value.contains('@')) {
-  //     return 'Type a valid email';
-  //   }
-  //   return null;
-  // }
-
   String? emailValidation(String? value) {
     if (value == null || value.isEmpty) {
       return null;
@@ -159,7 +149,7 @@ class _IPhoneViewState extends State<IPhoneView> {
               Form(
                 key: formKey,
                 child: SizedBox(
-                  height: size.height * .77,
+                  height: size.height * .8,
                   width: size.width * .92,
                   child: Padding(
                       padding:
@@ -198,6 +188,9 @@ class _IPhoneViewState extends State<IPhoneView> {
                         },
                       )),
                 ),
+              ),
+              SizedBox(
+                height: 15,
               ),
               Center(
                   child: Column(
