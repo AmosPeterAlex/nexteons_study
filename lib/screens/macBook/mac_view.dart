@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/controller/controller.dart';
+import 'package:nexteons_internship_task/screens/macBook/result.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
@@ -17,11 +20,35 @@ class MacView extends StatefulWidget {
 
 class _MacViewState extends State<MacView> {
   final formKey = GlobalKey<FormState>();
+  final DetailController controller = Get.put(DetailController());
+  void handleFormSubmission() {
+    final valid = formKey.currentState?.validate();
+    if (valid == true) {
+      controller.addStudent(
+        fname: allTextFields[0]['controller'].text,
+        lname: allTextFields[1]['controller'].text,
+        mail: allTextFields[2]['controller'].text,
+        id: int.parse(allTextFields[3]['controller'].text),
+        dist: allTextFields[4]['controller'].text,
+        phone: allTextFields[5]['controller'].text,
+        pin: int.parse(allTextFields[6]['controller'].text),
+        country: allTextFields[7]['controller'].text,
+      );
 
+      Get.to(() => ResultPage());
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Failed"),
+        backgroundColor: Colors.red,
+      ));
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
+    var size = MediaQuery
+        .of(context)
+        .size;
+    final getxController = Get.put(DetailController());
     return Scaffold(
       body: Row(
         children: [
@@ -52,7 +79,7 @@ class _MacViewState extends State<MacView> {
                     Text(
                       "BASIC DETAILS",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                     ),
                   ],
                 ),
@@ -63,7 +90,7 @@ class _MacViewState extends State<MacView> {
                     width: size.width * .62,
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .045),
+                      EdgeInsets.symmetric(horizontal: size.width * .045),
                       child: GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: allTextFields.length,
@@ -76,9 +103,9 @@ class _MacViewState extends State<MacView> {
                         itemBuilder: (context, index) {
                           var title = allTextFields[index]['title'];
                           var controller = allTextFields[index]['controller']
-                              as TextEditingController?;
+                          as TextEditingController?;
                           var validator = allTextFields[index]['validation']
-                              as String? Function(String?)?;
+                          as String? Function(String?)?;
                           return Column(
                             children: [
                               Align(
@@ -91,10 +118,10 @@ class _MacViewState extends State<MacView> {
                                 controller: controller,
                                 validation: validator,
                                 keyBoardType: allTextFields[index]
-                                    ["keyboard_type"] as TextInputType?,
+                                ["keyboard_type"] as TextInputType?,
                                 inputFormatters: allTextFields[index]
-                                        ["input_format"]
-                                    as List<TextInputFormatter>?,
+                                ["input_format"]
+                                as List<TextInputFormatter>?,
                               )
                             ],
                           );
@@ -124,24 +151,72 @@ class _MacViewState extends State<MacView> {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ),
-                        SaveButton(
-                          onPressed: () {
-                            final valid = formKey.currentState?.validate();
-                            if (valid == true) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Good"),
-                                backgroundColor: Colors.green,
-                              ));
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Failed"),
-                                backgroundColor: Colors.red,
-                              ));
-                            }
-                          },
-                        )
+                        SaveButton(onPressed: handleFormSubmission,)
+                        // SaveButton(
+                        //   onPressed: () {
+                        //     final valid = formKey.currentState?.validate();
+                        //     if (valid == true) {
+                        //       String firstName =
+                        //           allTextFields[0]['controller'].text;
+                        //       String lastName =
+                        //           allTextFields[1]['controller'].text;
+                        //       String email =
+                        //           allTextFields[2]['controller'].text;
+                        //       int userId = int.parse(
+                        //           allTextFields[3]['controller'].text);
+                        //       String district =
+                        //           allTextFields[4]['controller'].text;
+                        //       String phoneNo =
+                        //           allTextFields[5]['controller'].text;
+                        //       int pinCode = int.parse(
+                        //           allTextFields[6]['controller'].text);
+                        //       String country =
+                        //           allTextFields[7]['controller'].text;
+                        //
+                        //       getxController.addStudent(
+                        //         context,
+                        //         firstName: firstName,
+                        //         secondName: lastName,
+                        //         mail: email,
+                        //         userId: userId,
+                        //         dist: district,
+                        //         phone: int.parse(phoneNo),
+                        //         pin: pinCode,
+                        //         country: country,
+                        //       );
+                        //
+                        //       // Navigator.push(
+                        //       //   context,
+                        //       //   MaterialPageRoute(
+                        //       //     builder: (context) => ResultPage(
+                        //       //       firstName: firstName,
+                        //       //       lastName: lastName,
+                        //       //       email: email,
+                        //       //       userId: userId,
+                        //       //       district: district,
+                        //       //       phoneNo: int.parse(phoneNo),
+                        //       //       pinCode: pinCode,
+                        //       //       country: country,
+                        //       //     ),
+                        //       //   ),
+                        //       // );
+                        //       Get.to(ResultPage(firstName: firstName,
+                        //           lastName: lastName,
+                        //           email: email,
+                        //           userId: userId,
+                        //           district: district,
+                        //           phoneNo: int.parse(phoneNo),
+                        //           pinCode: pinCode,
+                        //           country: country));
+                        //     } else {
+                        //       ScaffoldMessenger.of(context)
+                        //           .showSnackBar(const SnackBar(
+                        //         content: Text("Failed"),
+                        //         backgroundColor: Colors.red,
+                        //       ));
+                        //     }
+                        //   },
+                        // )
                       ],
                     ),
                   ),
@@ -154,4 +229,3 @@ class _MacViewState extends State<MacView> {
     );
   }
 }
-
