@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
@@ -32,14 +33,44 @@ class _MacViewState extends State<MacView> {
 
   String? addValidation(String? value) {
     if (value == null || value.isEmpty) {
-      return 'This field cannot be empty';
+      return null;
     }
     return null;
   }
 
   String? nameValidation(String? value) {
+    if (value == null || value.length < 3) {
+      return 'Min 3 letter required';
+    }
+    return null;
+  }
+
+  // String? emailValidation(String? value) {
+  //   if (value == null || value.isEmpty) {
+  //     return null;
+  //   }
+  //   if (!value.contains('@')) {
+  //     return 'Type a valid email';
+  //   }
+  //   return null;
+  // }
+
+  String? emailValidation(String? value) {
     if (value == null || value.isEmpty) {
-      return 'This field cannot be empty';
+      return null;
+    }
+
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
+    if (!emailRegex.hasMatch(value)) {
+      return 'Type a valid email';
+    }
+    return null;
+  }
+
+  String? idValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'User Id is required';
     }
     return null;
   }
@@ -47,11 +78,11 @@ class _MacViewState extends State<MacView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var basicDetails = [
+    var allTextFields = [
       {
         "title": "First Name",
         "controller": firstNameController,
-        "validation": addValidation,
+        "validation": nameValidation,
       },
       {
         "title": "Last Name",
@@ -61,12 +92,12 @@ class _MacViewState extends State<MacView> {
       {
         "title": "Email Address",
         "controller": emailController,
-        "validation": addValidation,
+        "validation": emailValidation,
       },
       {
         "title": "User ID",
         "controller": userIdController,
-        "validation": addValidation,
+        "validation": idValidation,
       },
       {
         "title": "District",
@@ -106,6 +137,7 @@ class _MacViewState extends State<MacView> {
           Padding(
             padding: EdgeInsets.only(top: size.height * .06),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -118,21 +150,22 @@ class _MacViewState extends State<MacView> {
                     height: size.height * .64,
                     width: size.width * .62,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 2),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width * .045), //ee
                       child: GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: basicDetails.length,
+                        itemCount: allTextFields.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisExtent: 110,
+                            mainAxisExtent: size.height * .16,
                             childAspectRatio: 2.2,
-                            mainAxisSpacing: 5,
-                            crossAxisSpacing: 10),
+                            mainAxisSpacing: size.height * .015,
+                            crossAxisSpacing: size.width * .025),
                         itemBuilder: (context, index) {
-                          var title = basicDetails[index]['title'];
-                          var controller = basicDetails[index]['controller']
+                          var title = allTextFields[index]['title'];
+                          var controller = allTextFields[index]['controller']
                               as TextEditingController?;
-                          var validator = basicDetails[index]['validation']
+                          var validator = allTextFields[index]['validation']
                               as String? Function(String?)?;
                           return Column(
                             children: [
@@ -161,10 +194,22 @@ class _MacViewState extends State<MacView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Reset all",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                        TextButton(
+                          onPressed: () {
+                            firstNameController.clear();
+                            secondNameController.clear();
+                            emailController.clear();
+                            userIdController.clear();
+                            districtController.clear();
+                            phoneNoController.clear();
+                            pinCodeController.clear();
+                            countryController.clear();
+                          },
+                          child: Text(
+                            "Reset all",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                         ),
                         SaveButton(
                           onPressed: () {
@@ -196,4 +241,3 @@ class _MacViewState extends State<MacView> {
     );
   }
 }
-

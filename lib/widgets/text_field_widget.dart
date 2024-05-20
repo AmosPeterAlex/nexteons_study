@@ -19,7 +19,9 @@ class TextFieldWidget extends StatelessWidget {
           fillColor: ColorConstants.textFieldFillColor,
           filled: true,
           contentPadding: EdgeInsets.symmetric(vertical: 5),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none)),
     );
   }
 }
