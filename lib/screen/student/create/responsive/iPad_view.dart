@@ -6,142 +6,19 @@ import 'package:nexteons_internship_task/screen/student/create/controller/contro
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
-class IPadView extends StatefulWidget {
+class IPadView extends StatelessWidget {
   final DetailController controller;
+
   IPadView({
-    super.key, required this.controller,
+    super.key,
+    required this.controller,
   });
-
-  @override
-  State<IPadView> createState() => _IPadViewState();
-}
-
-class _IPadViewState extends State<IPadView> {
-  final formKey = GlobalKey<FormState>();
-  final TextEditingController firstNameController = TextEditingController();
-
-  final TextEditingController secondNameController = TextEditingController();
-
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController userIdController = TextEditingController();
-
-  final TextEditingController districtController = TextEditingController();
-
-  final TextEditingController phoneNoController = TextEditingController();
-
-  final TextEditingController pinCodeController = TextEditingController();
-
-  final TextEditingController countryController = TextEditingController();
-
-  String? addValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-    return null;
-  }
-
-  String? nameValidation(String? value) {
-    if (value == null || value.length < 3) {
-      return 'Min 3 letter required';
-    }
-    return null;
-  }
-
-  // String? emailValidation(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return null;
-  //   }
-  //   if (!value.contains('@')) {
-  //     return 'Type a valid email';
-  //   }
-  //   return null;
-  // }
-
-  String? emailValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
-    if (!emailRegex.hasMatch(value)) {
-      return 'Type a valid email';
-    }
-    return null;
-  }
-
-  String? idValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'User Id is required';
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var allTextFields = [
-      {
-        "title": "First Name",
-        "controller": firstNameController,
-        "validation": nameValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Last Name",
-        "controller": secondNameController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Email Address",
-        "controller": emailController,
-        "validation": emailValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "User ID",
-        "controller": userIdController,
-        "validation": idValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "District",
-        "controller": districtController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Phone No",
-        "controller": phoneNoController,
-        "validation": addValidation,
-        "input_format": [FilteringTextInputFormatter.digitsOnly],
-        "keyboard_type": TextInputType.number
-      },
-      {
-        "title": "Pincode",
-        "controller": pinCodeController,
-        "validation": addValidation,
-        "input_format": [FilteringTextInputFormatter.digitsOnly],
-        "keyboard_type": TextInputType.number
-      },
-      {
-        "title": "Country",
-        "controller": countryController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-    ];
-    final DetailController controller= Get.put(DetailController());
-    // final CreateStudentController controller =
-    // Get.put(CreateStudentController());
+
+
     return Scaffold(
       body: Row(
         children: [
@@ -184,43 +61,175 @@ class _IPadViewState extends State<IPadView> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: size.width * .045), //ee
-                      child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: allTextFields.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      child: GridView(
+                        shrinkWrap: true,
+                        gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisExtent: size.height * .1,
-                            childAspectRatio: 2,
-                            mainAxisSpacing: size.height * .015,
-                            crossAxisSpacing: size.width * .025),
-                        itemBuilder: (context, index) {
-                          var title = allTextFields[index]['title'];
-                          var controller = allTextFields[index]['controller']
-                              as TextEditingController?;
-                          var validator = allTextFields[index]['validation']
-                              as String? Function(String?)?;
-                          return Column(
+                            childAspectRatio: 16,
+                            mainAxisExtent: 120,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 80),
+                        children: [
+                          Column(
                             children: [
                               Align(
                                   alignment: Alignment.topLeft,
-                                  child: Text("$title")),
+                                  child: Text("First Name")),
                               SizedBox(
                                 height: 10,
                               ),
-                              Expanded(
-                                child: TextFieldWidget(
-                                  controller: controller,
-                                  validation: validator,
-                                  keyBoardType: allTextFields[index]
-                                      ["keyboard_type"] as TextInputType?,
-                                  inputFormatters: allTextFields[index]
-                                          ["input_format"]
-                                      as List<TextInputFormatter>?,
-                                ),
+                              TextFieldWidget(
+                                controller: controller.firstNameController,
+                                validation: (value) {
+                                  if (value == null || value.length < 3) {
+                                    return 'Min 3 letter required';
+                                  }
+                                  return null;
+                                },
                               )
                             ],
-                          );
-                        },
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("Last Name")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.secondNameController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("Email Address")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.emailController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+
+                                  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
+                                  if (!emailRegex.hasMatch(value)) {
+                                    return 'Type a valid email';
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("User ID")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.userIdController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'User Id is required';
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("District")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.districtController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("Phone No")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.phoneNoController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("Pincode")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.pinCodeController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text("Country")),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              TextFieldWidget(
+                                controller: controller.countryController,
+                                validation: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return null;
+                                  }
+                                  return null;
+                                },
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -234,17 +243,7 @@ class _IPadViewState extends State<IPadView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
-
-                          onPressed: () {
-                            firstNameController.clear();
-                            secondNameController.clear();
-                            emailController.clear();
-                            userIdController.clear();
-                            districtController.clear();
-                            phoneNoController.clear();
-                            pinCodeController.clear();
-                            countryController.clear();
-                          },
+                          onPressed: controller.clearDetails,
                           child: Text(
                             "Reset all",
                             style: TextStyle(
@@ -252,22 +251,7 @@ class _IPadViewState extends State<IPadView> {
                           ),
                         ),
                         SaveButton(
-                          onPressed: () {
-                            final valid = formKey.currentState?.validate();
-                            if (valid == true) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Good"),
-                                backgroundColor: Colors.green,
-                              ));
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Failed"),
-                                backgroundColor: Colors.red,
-                              ));
-                            }
-                          },
+                          onPressed: controller.addStudent,
                         )
                       ],
                     ),

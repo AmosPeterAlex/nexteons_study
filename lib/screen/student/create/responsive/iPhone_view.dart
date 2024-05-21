@@ -8,130 +8,18 @@ import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
 import '../controller/controller.dart';
 
-class IPhoneView extends StatefulWidget {
+class IPhoneView extends StatelessWidget {
   final DetailController controller;
+
   IPhoneView({
-    super.key, required this.controller,
+    super.key,
+    required this.controller,
   });
-
-  @override
-  State<IPhoneView> createState() => _IPhoneViewState();
-}
-
-class _IPhoneViewState extends State<IPhoneView> {
-  final formKey = GlobalKey<FormState>();
-  final TextEditingController firstNameController = TextEditingController();
-
-  final TextEditingController secondNameController = TextEditingController();
-
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController userIdController = TextEditingController();
-
-  final TextEditingController districtController = TextEditingController();
-
-  final TextEditingController phoneNoController = TextEditingController();
-
-  final TextEditingController pinCodeController = TextEditingController();
-
-  final TextEditingController countryController = TextEditingController();
-
-  String? addValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-    return null;
-  }
-
-  String? nameValidation(String? value) {
-    if (value == null || value.length < 3) {
-      return 'Min 3 letter required';
-    }
-    return null;
-  }
-
-  String? emailValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
-    if (!emailRegex.hasMatch(value)) {
-      return 'Type a valid email';
-    }
-    return null;
-  }
-
-  String? idValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'User Id is required';
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var allTextFields = [
-      {
-        "title": "First Name",
-        "controller": firstNameController,
-        "validation": nameValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Last Name",
-        "controller": secondNameController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Email Address",
-        "controller": emailController,
-        "validation": emailValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "User ID",
-        "controller": userIdController,
-        "validation": idValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "District",
-        "controller": districtController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-      {
-        "title": "Phone No",
-        "controller": phoneNoController,
-        "validation": addValidation,
-        "input_format": [FilteringTextInputFormatter.digitsOnly],
-        "keyboard_type": TextInputType.number
-      },
-      {
-        "title": "Pincode",
-        "controller": pinCodeController,
-        "validation": addValidation,
-        "input_format": [FilteringTextInputFormatter.digitsOnly],
-        "keyboard_type": TextInputType.number
-      },
-      {
-        "title": "Country",
-        "controller": countryController,
-        "validation": addValidation,
-        "input_format": null,
-        "keyboard_type": null
-      },
-    ];
-    final DetailController controller = Get.put(DetailController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
@@ -158,92 +46,196 @@ class _IPhoneViewState extends State<IPhoneView> {
                   height: size.height * .8,
                   width: size.width * .92,
                   child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .045),
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        itemExtent: 70,
-                        itemCount: allTextFields.length,
-                        itemBuilder: (context, index) {
-                          var title = allTextFields[index]['title'];
-                          var controller = allTextFields[index]['controller']
-                              as TextEditingController?;
-                          var validator = allTextFields[index]['validation']
-                              as String? Function(String?)?;
-                          return Column(
-                            children: [
-                              Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text("$title")),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Expanded(
-                                child: TextFieldWidget(
-                                  controller: controller,
-                                  validation: validator,
-                                  keyBoardType: allTextFields[index]
-                                      ["keyboard_type"] as TextInputType?,
-                                  inputFormatters: allTextFields[index]
-                                          ["input_format"]
-                                      as List<TextInputFormatter>?,
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                      )),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * .045),
+                    child: ListView(
+                      children: [
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("First Name")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.firstNameController,
+                              validation: (value) {
+                                if (value == null || value.length < 3) {
+                                  return 'Min 3 letter required';
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("Last Name")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.secondNameController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("Email Address")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.emailController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+
+                                final emailRegex =
+                                    RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
+                                if (!emailRegex.hasMatch(value)) {
+                                  return 'Type a valid email';
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("User ID")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.userIdController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'User Id is required';
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("District")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.districtController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("Phone No")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.phoneNoController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("Pincode")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.pinCodeController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text("Country")),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextFieldWidget(
+                              controller: controller.countryController,
+                              validation: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return null;
+                                }
+                                return null;
+                              },
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 15,
               ),
               Center(
-                  child: Column(
-                children: [
-                  SaveButton(
-                    onPressed: controller.addStudent,
-                  ),
-                  // SaveButton(
-                  //   onPressed: () {
-                  //     final valid = formKey.currentState?.validate();
-                  //     if (valid == true) {
-                  //       ScaffoldMessenger.of(context)
-                  //           .showSnackBar(const SnackBar(
-                  //         content: Text("Good"),
-                  //         backgroundColor: Colors.green,
-                  //       ));
-                  //     } else {
-                  //       ScaffoldMessenger.of(context)
-                  //           .showSnackBar(const SnackBar(
-                  //         content: Text("Failed"),
-                  //         backgroundColor: Colors.red,
-                  //       ));
-                  //     }
-                  //   },
-                  // ),
-                  InkWell(
-                    onTap: controller.clearDetails,
-                    // onTap: () {
-                    //   firstNameController.clear();
-                    //   secondNameController.clear();
-                    //   emailController.clear();
-                    //   userIdController.clear();
-                    //   districtController.clear();
-                    //   phoneNoController.clear();
-                    //   pinCodeController.clear();
-                    //   countryController.clear();
-                    // },
-                    child: Text(
-                      "Reset all",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: ColorConstants.blackColor),
+                child: Column(
+                  children: [
+                    SaveButton(
+                      onPressed: controller.addStudent,
                     ),
-                  ),
-                ],
-              )),
+                    InkWell(
+                      onTap: controller.clearDetails,
+                      child: Text(
+                        "Reset all",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: ColorConstants.blackColor),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

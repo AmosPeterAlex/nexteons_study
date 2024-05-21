@@ -5,12 +5,13 @@ import 'package:get/get.dart';
 import 'package:nexteons_internship_task/constants/app_constants.dart';
 import 'package:nexteons_internship_task/screen/student/list/result.dart';
 
-import '../../../../constants/text_field_config.dart';
 import '../../../../main.dart';
 import '../../../../model/model.dart';
 
 class DetailController extends GetxController {
   final formKey = GlobalKey<FormState>();
+
+
   final TextEditingController firstNameController = TextEditingController();
 
   final TextEditingController secondNameController = TextEditingController();
@@ -26,6 +27,7 @@ class DetailController extends GetxController {
   final TextEditingController pinCodeController = TextEditingController();
 
   final TextEditingController countryController = TextEditingController();
+
 
   // void addStudent(BuildContext context,
   //     {required String firstName,
