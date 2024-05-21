@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
@@ -21,18 +21,18 @@ class IPhoneView extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorConstants.primaryColor,
-        toolbarHeight: 30,
-        title: SizedBox(
-            height: 60,
-            width: 140,
-            child: Image.asset("assets/images/nexteons_logo.png")),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: ColorConstants.primaryColor,
+      //   toolbarHeight: 30,
+      //   title: SizedBox(
+      //       height: 60,
+      //       width: 140,
+      //       child: Image.asset("assets/images/nexteons_logo.png")),
+      // ),
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 7),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -43,7 +43,7 @@ class IPhoneView extends StatelessWidget {
               Form(
                 key: controller.formKey,
                 child: SizedBox(
-                  height: size.height * .8,
+                  height: size.height * .75,
                   width: size.width * .92,
                   child: Padding(
                     padding:
@@ -51,13 +51,11 @@ class IPhoneView extends StatelessWidget {
                     child: ListView(
                       children: [
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Align(
                                 alignment: Alignment.topLeft,
                                 child: Text("First Name")),
-                            SizedBox(
-                              height: 10,
-                            ),
                             TextFieldWidget(
                               controller: controller.firstNameController,
                               validation: (value) {
@@ -79,12 +77,6 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.secondNameController,
-                              validation: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return null;
-                                }
-                                return null;
-                              },
                             )
                           ],
                         ),
@@ -124,6 +116,10 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.userIdController,
+                              keyBoardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
                               validation: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'User Id is required';
@@ -143,12 +139,6 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.districtController,
-                              validation: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return null;
-                                }
-                                return null;
-                              },
                             )
                           ],
                         ),
@@ -162,12 +152,10 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.phoneNoController,
-                              validation: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return null;
-                                }
-                                return null;
-                              },
+                              keyBoardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
                             )
                           ],
                         ),
@@ -181,12 +169,10 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.pinCodeController,
-                              validation: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return null;
-                                }
-                                return null;
-                              },
+                              keyBoardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
                             )
                           ],
                         ),
@@ -200,12 +186,10 @@ class IPhoneView extends StatelessWidget {
                             ),
                             TextFieldWidget(
                               controller: controller.countryController,
-                              validation: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return null;
-                                }
-                                return null;
-                              },
+                              keyBoardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
                             )
                           ],
                         )
@@ -229,7 +213,7 @@ class IPhoneView extends StatelessWidget {
                         "Reset all",
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            fontSize: 16,
+                            // fontSize: 16,
                             color: ColorConstants.blackColor),
                       ),
                     ),

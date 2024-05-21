@@ -5,6 +5,7 @@ import 'package:nexteons_internship_task/screen/student/create/controller/contro
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPad_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPhone_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/mac_view.dart';
+import 'package:nexteons_internship_task/screen/student/widgets/frame_build.dart';
 
 class CreateStudent extends StatefulWidget {
   const CreateStudent({super.key});
@@ -31,15 +32,17 @@ class _CreateStudentState extends State<CreateStudent> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveLayoutBuilder(
-        macView: MacView(
-          controller: controller,
-        ),
-        iPhoneView: IPhoneView(
-          controller: controller,
-        ),
-        iPadView: IPadView(
-          controller: controller,
-        ));
+    return FrameBuild(
+      child: ResponsiveLayoutBuilder(
+          macView: MacView(
+            controller: controller,
+          ),
+          iPhoneView: IPhoneView(
+            controller: controller,
+          ),
+          iPadView: IPadView(
+            controller: controller,
+          )),
+    );
   }
 }
