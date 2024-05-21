@@ -56,7 +56,7 @@ class _MacViewState extends State<MacView> {
                     Text(
                       "BASIC DETAILS",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                          TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
                     ),
                   ],
                 ),
@@ -162,20 +162,26 @@ class _MacViewState extends State<MacView> {
                                   country: country);
 
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ResultPage(
-                                    firstName: firstName,
-                                    lastName: secondName,
-                                    email: email,
-                                    userId: userId,
-                                    district: district,
-                                    phoneNo: phoneNo,
-                                    pinCode: pinCode,
-                                    country: country,
-                                  ),
-                                ),
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ResultPage(),
+                                  ));
+
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => ResultPage(
+                              //       firstName: firstName,
+                              //       lastName: secondName,
+                              //       email: email,
+                              //       userId: userId,
+                              //       district: district,
+                              //       phoneNo: phoneNo,
+                              //       pinCode: pinCode,
+                              //       country: country,
+                              //     ),
+                              //   ),
+                              // );
                               // ScaffoldMessenger.of(context)
                               //     .showSnackBar(const SnackBar(
                               //   content: Text("Good"),

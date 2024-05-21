@@ -7,7 +7,7 @@ class DetailController extends GetxController {
   List<Student> students = [
     Student(
         firstname: "Amos",
-        lastname: "Peter",
+        secondName: "Peter",
         email: "amos@gmail.com",
         id: 123654,
         district: "Kollam",
@@ -27,7 +27,7 @@ class DetailController extends GetxController {
         required String country}) {
     students.add(Student(
         firstname: firstName,
-        lastname: secondName,
+        secondName: secondName,
         email: mail,
         id: userId,
         district: dist,
