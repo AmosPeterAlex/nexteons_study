@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:nexteons_internship_task/responsive_layout_builder.dart';
-import 'package:nexteons_internship_task/screens/iPad/iPad_view.dart';
-import 'package:nexteons_internship_task/screens/iPhone/iPhone_view.dart';
-import 'package:nexteons_internship_task/screens/macBook/mac_view.dart';
+import 'package:get/get.dart';
+import 'package:nexteons_internship_task/screen/student/create/view.dart';
+import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
+
+import 'model/model.dart';
+
+RxList<Student> students = [
+  Student(
+      firstname: "Amos",
+      secondName: "Peter",
+      email: "amos@gmail.com",
+      id: 123654,
+      district: "Kollam",
+      phoneNumber: 987654321,
+      pincode: 2244557,
+      country: "India")
+].obs;
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +26,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ResponsiveLayoutBuilder(
-          macView: MacView(), iPhoneView: IPhoneView(), iPadView: IPadView()),
+      navigatorKey: navigatorKey,
+      home: CreateStudent(),
     );
   }
 }

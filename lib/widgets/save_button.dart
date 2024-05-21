@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 
 class SaveButton extends StatelessWidget {
   final String? buttonText;

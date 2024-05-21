@@ -6,4 +6,5 @@ class ColorConstants {
   static const Color whiteColor = Color(0xFFFFFFFF); //white
   static const Color blackColor = Color(0xFF000000); //black
   static const Color textFieldFillColor = Color(0xFFF4F4F4); //textField fill color
+  static const Color cardFillColor = Color(0xFFB0B0B0);
 }

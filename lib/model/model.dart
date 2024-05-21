@@ -1,6 +1,6 @@
 class Student {
   final String firstname;
-  final String lastname;
+  final String secondName;
   final String email;
   final int id;
   final String district;
@@ -10,7 +10,7 @@ class Student {
 
   Student({
     required this.firstname,
-    required this.lastname,
+    required this.secondName,
     required this.email,
     required this.id,
     required this.district,

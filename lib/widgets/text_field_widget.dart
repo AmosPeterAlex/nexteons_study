@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final TextEditingController? controller;
