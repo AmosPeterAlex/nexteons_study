@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
+import '../controller/controller.dart';
+
 class IPhoneView extends StatefulWidget {
+  final DetailController controller;
   IPhoneView({
-    super.key,
+    super.key, required this.controller,
   });
 
   @override
@@ -126,6 +131,7 @@ class _IPhoneViewState extends State<IPhoneView> {
         "keyboard_type": null
       },
     ];
+    final DetailController controller = Get.put(DetailController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
@@ -147,7 +153,7 @@ class _IPhoneViewState extends State<IPhoneView> {
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
               ),
               Form(
-                key: formKey,
+                key: controller.formKey,
                 child: SizedBox(
                   height: size.height * .8,
                   width: size.width * .92,
@@ -196,34 +202,38 @@ class _IPhoneViewState extends State<IPhoneView> {
                   child: Column(
                 children: [
                   SaveButton(
-                    onPressed: () {
-                      final valid = formKey.currentState?.validate();
-                      if (valid == true) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("Good"),
-                          backgroundColor: Colors.green,
-                        ));
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("Failed"),
-                          backgroundColor: Colors.red,
-                        ));
-                      }
-                    },
+                    onPressed: controller.addStudent,
                   ),
+                  // SaveButton(
+                  //   onPressed: () {
+                  //     final valid = formKey.currentState?.validate();
+                  //     if (valid == true) {
+                  //       ScaffoldMessenger.of(context)
+                  //           .showSnackBar(const SnackBar(
+                  //         content: Text("Good"),
+                  //         backgroundColor: Colors.green,
+                  //       ));
+                  //     } else {
+                  //       ScaffoldMessenger.of(context)
+                  //           .showSnackBar(const SnackBar(
+                  //         content: Text("Failed"),
+                  //         backgroundColor: Colors.red,
+                  //       ));
+                  //     }
+                  //   },
+                  // ),
                   InkWell(
-                    onTap: () {
-                      firstNameController.clear();
-                      secondNameController.clear();
-                      emailController.clear();
-                      userIdController.clear();
-                      districtController.clear();
-                      phoneNoController.clear();
-                      pinCodeController.clear();
-                      countryController.clear();
-                    },
+                    onTap: controller.clearDetails,
+                    // onTap: () {
+                    //   firstNameController.clear();
+                    //   secondNameController.clear();
+                    //   emailController.clear();
+                    //   userIdController.clear();
+                    //   districtController.clear();
+                    //   phoneNoController.clear();
+                    //   pinCodeController.clear();
+                    //   countryController.clear();
+                    // },
                     child: Text(
                       "Reset all",
                       style: TextStyle(

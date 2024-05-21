@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
-import 'package:nexteons_internship_task/controller/controller.dart';
-import 'package:nexteons_internship_task/screens/macBook/result.dart';
+import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
+import 'package:nexteons_internship_task/screen/student/list/result.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
-import '../../constants/text_field_config.dart';
+import '../../../../constants/text_field_config.dart';
 
 class MacView extends StatefulWidget {
+  final DetailController controller;
   MacView({
-    super.key,
+    super.key, required this.controller,
   });
 
   @override
@@ -19,13 +20,13 @@ class MacView extends StatefulWidget {
 }
 
 class _MacViewState extends State<MacView> {
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final getXController = Get.put(DetailController());
-
+    final controller = Get.put(DetailController());
+    // final DetailController controller= Get.put(DetailController());
     return Scaffold(
       body: Row(
         children: [
@@ -61,7 +62,7 @@ class _MacViewState extends State<MacView> {
                   ],
                 ),
                 Form(
-                  key: formKey,
+                  key: controller.formKey,
                   child: SizedBox(
                     height: size.height * .64,
                     width: size.width * .62,
@@ -79,7 +80,7 @@ class _MacViewState extends State<MacView> {
                             crossAxisSpacing: size.width * .025),
                         itemBuilder: (context, index) {
                           var title = allTextFields[index]['title'];
-                          var controller = allTextFields[index]['controller']
+                          var control = allTextFields[index]['controller']
                               as TextEditingController?;
                           var validator = allTextFields[index]['validation']
                               as String? Function(String?)?;
@@ -92,7 +93,7 @@ class _MacViewState extends State<MacView> {
                                 height: 10,
                               ),
                               TextFieldWidget(
-                                controller: controller,
+                                controller: control,
                                 validation: validator,
                                 keyBoardType: allTextFields[index]
                                     ["keyboard_type"] as TextInputType?,
@@ -128,74 +129,57 @@ class _MacViewState extends State<MacView> {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ),
-                        SaveButton(
-                          onPressed: () {
-                            final valid = formKey.currentState?.validate();
-                            if (valid == true) {
-                              String firstName =
-                                  allTextFields[0]['controller'].text;
-                              String secondName =
-                                  allTextFields[1]['controller'].text;
-                              String email =
-                                  allTextFields[2]['controller'].text;
-                              int userId = int.tryParse(
-                                      allTextFields[3]['controller'].text) ??
-                                  0;
-                              String district =
-                                  allTextFields[4]['controller'].text;
-                              int phoneNo = int.tryParse(
-                                      allTextFields[5]['controller'].text) ??
-                                  0;
-                              int pinCode = int.tryParse(
-                                      allTextFields[6]['controller'].text) ??
-                                  0;
-                              String country =
-                                  allTextFields[7]['controller'].text;
-                              getXController.addStudent(context,
-                                  firstName: firstName,
-                                  secondName: secondName,
-                                  mail: email,
-                                  userId: userId,
-                                  dist: district,
-                                  phone: phoneNo,
-                                  pin: pinCode,
-                                  country: country);
-
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ResultPage(),
-                                  ));
-
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => ResultPage(
-                              //       firstName: firstName,
-                              //       lastName: secondName,
-                              //       email: email,
-                              //       userId: userId,
-                              //       district: district,
-                              //       phoneNo: phoneNo,
-                              //       pinCode: pinCode,
-                              //       country: country,
-                              //     ),
-                              //   ),
-                              // );
-                              // ScaffoldMessenger.of(context)
-                              //     .showSnackBar(const SnackBar(
-                              //   content: Text("Good"),
-                              //   backgroundColor: Colors.green,
-                              // ));
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Failed"),
-                                backgroundColor: Colors.red,
-                              ));
-                            }
-                          },
-                        )
+                        // SaveButton(
+                        //   onPressed: () {
+                        //     final valid = formKey.currentState?.validate();
+                        //     if (valid == true) {
+                        //       String firstName =
+                        //           allTextFields[0]['controller'].text;
+                        //       String secondName =
+                        //           allTextFields[1]['controller'].text;
+                        //       String email =
+                        //           allTextFields[2]['controller'].text;
+                        //       int userId = int.tryParse(
+                        //               allTextFields[3]['controller'].text) ??
+                        //           0;
+                        //       String district =
+                        //           allTextFields[4]['controller'].text;
+                        //       int phoneNo = int.tryParse(
+                        //               allTextFields[5]['controller'].text) ??
+                        //           0;
+                        //       int pinCode = int.tryParse(
+                        //               allTextFields[6]['controller'].text) ??
+                        //           0;
+                        //       String country =
+                        //           allTextFields[7]['controller'].text;
+                        //       getXController.addStudent(context,
+                        //           firstName: firstName,
+                        //           secondName: secondName,
+                        //           mail: email,
+                        //           userId: userId,
+                        //           dist: district,
+                        //           phone: phoneNo,
+                        //           pin: pinCode,
+                        //           country: country);
+                        //
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //             builder: (context) => ResultPage(),
+                        //           ));
+                        //
+                        //
+                        //     } else {
+                        //       ScaffoldMessenger.of(context)
+                        //           .showSnackBar(const SnackBar(
+                        //         content: Text("Failed"),
+                        //         backgroundColor: Colors.red,
+                        //       ));
+                        //     }
+                        //   },
+                        // )
+                        //up code to be commented-------
+                        SaveButton(onPressed: controller.addStudent,)
                       ],
                     ),
                   ),

@@ -1,14 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:nexteons_internship_task/constants/color_constants.dart';
+import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
 class IPadView extends StatefulWidget {
+  final DetailController controller;
   IPadView({
-    super.key,
+    super.key, required this.controller,
   });
 
   @override
@@ -138,6 +139,9 @@ class _IPadViewState extends State<IPadView> {
         "keyboard_type": null
       },
     ];
+    final DetailController controller= Get.put(DetailController());
+    // final CreateStudentController controller =
+    // Get.put(CreateStudentController());
     return Scaffold(
       body: Row(
         children: [
@@ -168,12 +172,12 @@ class _IPadViewState extends State<IPadView> {
                     Text(
                       "BASIC DETAILS",
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                     ),
                   ],
                 ),
                 Form(
-                  key: formKey,
+                  key: controller.formKey,
                   child: SizedBox(
                     height: size.height * .64,
                     width: size.width * .68,
@@ -192,9 +196,9 @@ class _IPadViewState extends State<IPadView> {
                         itemBuilder: (context, index) {
                           var title = allTextFields[index]['title'];
                           var controller = allTextFields[index]['controller']
-                          as TextEditingController?;
+                              as TextEditingController?;
                           var validator = allTextFields[index]['validation']
-                          as String? Function(String?)?;
+                              as String? Function(String?)?;
                           return Column(
                             children: [
                               Align(
@@ -208,10 +212,10 @@ class _IPadViewState extends State<IPadView> {
                                   controller: controller,
                                   validation: validator,
                                   keyBoardType: allTextFields[index]
-                                  ["keyboard_type"] as TextInputType?,
+                                      ["keyboard_type"] as TextInputType?,
                                   inputFormatters: allTextFields[index]
-                                  ["input_format"]
-                                  as List<TextInputFormatter>?,
+                                          ["input_format"]
+                                      as List<TextInputFormatter>?,
                                 ),
                               )
                             ],
@@ -230,6 +234,7 @@ class _IPadViewState extends State<IPadView> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
+
                           onPressed: () {
                             firstNameController.clear();
                             secondNameController.clear();

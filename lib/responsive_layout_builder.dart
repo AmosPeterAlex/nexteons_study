@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nexteons_internship_task/screens/iPad/iPad_view.dart';
-import 'package:nexteons_internship_task/screens/macBook/mac_view.dart';
 
 class ResponsiveLayoutBuilder extends StatelessWidget {
   final Widget iPhoneView;

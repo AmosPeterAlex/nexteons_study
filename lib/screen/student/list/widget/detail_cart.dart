@@ -28,9 +28,9 @@ class DetailCard extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Colors.grey),
-          color: Colors.grey..withOpacity(.5)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
+          border: Border.all(width: 1, color: ColorConstants.cardFillColor),
+          color: ColorConstants.cardFillColor..withOpacity(.5)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
