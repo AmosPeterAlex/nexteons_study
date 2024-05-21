@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
+import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/widgets/save_button.dart';
 import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
 
@@ -21,7 +20,6 @@ class IPadView extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-
           Padding(
             padding: EdgeInsets.only(
               top: size.height * .06,
@@ -157,7 +155,6 @@ class IPadView extends StatelessWidget {
                               ),
                               TextFieldWidget(
                                 controller: controller.districtController,
-
                               )
                             ],
                           ),
@@ -175,7 +172,6 @@ class IPadView extends StatelessWidget {
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
-
                               )
                             ],
                           ),
@@ -193,7 +189,6 @@ class IPadView extends StatelessWidget {
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
-
                               )
                             ],
                           ),
@@ -207,7 +202,6 @@ class IPadView extends StatelessWidget {
                               ),
                               TextFieldWidget(
                                 controller: controller.countryController,
-
                               )
                             ],
                           )

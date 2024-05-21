@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nexteons_internship_task/screen/student/create/view.dart';
 import 'package:nexteons_internship_task/screen/student/list/widget/detail_cart.dart';
+import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
 
 import '../../../../utils/constants/color_constants.dart';
 import '../../../../main.dart';
@@ -68,7 +70,8 @@ class IPadResultPage extends StatelessWidget {
                           return index == students.length
                               ? InkWell(
                                   onTap: () {
-                                    Get.to(CreateStudent());
+                                    GoRouter.of(navigatorKey.currentContext!).go("/home");
+                                    // Get.to(CreateStudent());
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
