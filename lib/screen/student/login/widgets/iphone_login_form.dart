@@ -30,7 +30,7 @@ class IPhoneFormWidget extends StatelessWidget {
           child: SizedBox(
             height: size.height * .07,
             width: size.width * .87,
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
@@ -50,7 +50,7 @@ class IPhoneFormWidget extends StatelessWidget {
           child: SizedBox(
             height: size.height * .07,
             width: size.width * .87,
-            child: TextField(
+            child: TextFormField(
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
