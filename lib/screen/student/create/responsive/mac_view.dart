@@ -51,6 +51,7 @@ class MacView extends StatelessWidget {
                         shrinkWrap: true,
                         gridDelegate:
                              SliverGridDelegateWithFixedCrossAxisCount(
+                               //baki yik add akenm
                                 crossAxisCount: 2,
                                 childAspectRatio: 1,
                                 mainAxisExtent: 105,

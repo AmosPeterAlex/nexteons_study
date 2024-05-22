@@ -53,6 +53,7 @@ class IPadView extends StatelessWidget {
                           shrinkWrap: true,
                           gridDelegate:
                                SliverGridDelegateWithFixedCrossAxisCount(
+                                 //others to be made responsive
                                   crossAxisCount: 2,
                                   childAspectRatio: 14,
                                   mainAxisExtent: 110,
