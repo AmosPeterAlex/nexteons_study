@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nexteons_internship_task/utils/constants/size_check.dart';
 
 class ResponsiveLayoutBuilder extends StatelessWidget {
   final Widget iPhoneView;
@@ -13,11 +14,12 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size =MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth < 600) {
+        if (fnCheckIphone(size.width)) {
           return iPhoneView;
-        } else if (constraints.maxWidth < 1000) {
+        } else if (fnCheckIPad(size.width)) {
           return iPadView;
         } else {
           return macView;

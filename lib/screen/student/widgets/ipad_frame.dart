@@ -9,7 +9,7 @@ class IPadFrame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      width: 250,
+      width: 240,
       color:ColorConstants.primaryColor,
       padding: const EdgeInsets.only(top: 63, right: 35, left: 35),
       child: Align(

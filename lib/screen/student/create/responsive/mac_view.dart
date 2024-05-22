@@ -43,19 +43,19 @@ class MacView extends StatelessWidget {
                   key: controller.formKey,
                   child: SizedBox(
                     height: size.height * .64,
-                    width: size.width * .62,
+                    width: size.width * .66,
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .045),
+                          EdgeInsets.symmetric(horizontal: size.width * .055),
                       child: GridView(
                         shrinkWrap: true,
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                             SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 1,
                                 mainAxisExtent: 105,
                                 mainAxisSpacing: 20,
-                                crossAxisSpacing: 80),
+                                crossAxisSpacing: size.width*.1),
                         children: [
                           Column(
                             children: [

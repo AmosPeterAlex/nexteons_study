@@ -1,5 +1,5 @@
 bool fnCheckIphone(double width) {
-  return (width < 600);
+  return (width < 650);
 }
 
 bool fnCheckIPad(double width) {
