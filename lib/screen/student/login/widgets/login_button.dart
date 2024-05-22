@@ -13,7 +13,7 @@ class LoginButton extends StatelessWidget {
       minWidth: size.width * .89,
       height: size.height * .07,
       child: Text(
-        "Login",
+        "LOGIN",
         style: TextStyle(color: ColorConstants.whiteColor),
       ),
       color: ColorConstants.loginButtonColor,

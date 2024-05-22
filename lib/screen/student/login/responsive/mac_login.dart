@@ -33,8 +33,12 @@ class MacLogin extends StatelessWidget {
               //     image: DecorationImage(
               //       image: AssetImage("assets\images\nexteons_login.png"),
               //     ),
-              //   ),
+              //   ),assets\images\nexteons_login_jpg.jpg
               // ),
+              // Container(
+              //   height: size.height * .55,
+              //   width: size.width * .55,
+              //   child:Image.asset("assets\images\nexteons_login_jpg.jpg")),
               Container(
                 height: size.height * .55,
                 width: size.width * .55,

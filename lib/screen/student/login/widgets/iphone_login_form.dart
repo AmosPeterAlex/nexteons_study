@@ -4,11 +4,16 @@ import '../../../../utils/constants/color_constants.dart';
 // import 'package:flutter/widgets.dart';
 
 class IPhoneFormWidget extends StatelessWidget {
-  final String firstTitle;final String secondTitle;
+  final String firstTitle;
+  final String secondTitle;
 
   final void Function()? onLoginPress;
 
-  const IPhoneFormWidget({super.key, this.onLoginPress, required this.firstTitle, required this.secondTitle});
+  const IPhoneFormWidget(
+      {super.key,
+      this.onLoginPress,
+      required this.firstTitle,
+      required this.secondTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +38,13 @@ class IPhoneFormWidget extends StatelessWidget {
             ),
           ),
         ),
-         Align(
-            alignment: Alignment.bottomLeft,
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(secondTitle))),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Text(secondTitle),
+          ),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: SizedBox(
@@ -54,24 +61,26 @@ class IPhoneFormWidget extends StatelessWidget {
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 6),
             child: Text(
               "Forgot Password",
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
           ),
         ),
-        SizedBox(height: 15,),
-        MaterialButton(
-          onPressed: onLoginPress,
-          minWidth: size.width * .89,
-          height: size.height * .07,
-          child: Text(
-            "Login",
-            style: TextStyle(color: ColorConstants.whiteColor),
-          ),
-          color: ColorConstants.loginButtonColor,
-        )
+        SizedBox(
+          height: 15,
+        ),
+        // MaterialButton(
+        //   onPressed: onLoginPress,
+        //   minWidth: size.width * .89,
+        //   height: size.height * .07,
+        //   child: Text(
+        //     "Login",
+        //     style: TextStyle(color: ColorConstants.whiteColor),
+        //   ),
+        //   color: ColorConstants.loginButtonColor,
+        // )
       ],
     );
   }
