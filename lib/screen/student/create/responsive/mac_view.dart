@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
-import 'package:nexteons_internship_task/screen/student/list/responsive/mac_result_view.dart';
-import 'package:nexteons_internship_task/widgets/save_button.dart';
-import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
+import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
+import 'package:nexteons_internship_task/screen/student/create/widgets/save_button.dart';
+import 'package:nexteons_internship_task/screen/student/create/widgets/text_field_widget.dart';
 
 class MacView extends StatelessWidget {
   final DetailController controller;
@@ -21,7 +19,6 @@ class MacView extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-
           Padding(
             padding: EdgeInsets.only(
               top: size.height * .06,
@@ -46,19 +43,20 @@ class MacView extends StatelessWidget {
                   key: controller.formKey,
                   child: SizedBox(
                     height: size.height * .64,
-                    width: size.width * .62,
+                    width: size.width * .66,
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: size.width * .045),
+                          EdgeInsets.symmetric(horizontal: size.width * .055),
                       child: GridView(
                         shrinkWrap: true,
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                             SliverGridDelegateWithFixedCrossAxisCount(
+                               //baki yik add akenm
                                 crossAxisCount: 2,
                                 childAspectRatio: 1,
                                 mainAxisExtent: 105,
                                 mainAxisSpacing: 20,
-                                crossAxisSpacing: 80),
+                                crossAxisSpacing: size.width*.1),
                         children: [
                           Column(
                             children: [

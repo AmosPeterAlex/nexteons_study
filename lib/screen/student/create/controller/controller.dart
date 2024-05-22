@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
-import 'package:nexteons_internship_task/screen/student/list/responsive/mac_result_view.dart';
-import 'package:nexteons_internship_task/screen/student/list/view.dart';
 
 import '../../../../main.dart';
 import '../../../../model/model.dart';
@@ -32,13 +29,15 @@ class DetailController extends GetxController {
           pincode: int.parse(pinCodeController.text),
           country: countryController.text));
 
-      Get.to(ListStudent());
+      // Get.to(ListStudent());
+      GoRouter.of(navigatorKey.currentContext!).go("/result");
     } else {
-      ScaffoldMessenger.of(navigatorKey.currentContext!)
-          .showSnackBar(const SnackBar(
-        content: Text("Failed"),
-        backgroundColor: Colors.red,
-      ));
+      ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+        const SnackBar(
+          content: Text("Failed"),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 

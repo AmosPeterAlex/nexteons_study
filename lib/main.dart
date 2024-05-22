@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nexteons_internship_task/screen/student/create/view.dart';
-import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
+import 'package:nexteons_internship_task/routes.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'model/model.dart';
 
@@ -18,6 +18,7 @@ RxList<Student> students = [
 ].obs;
 
 void main() {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -26,10 +27,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
-      navigatorKey: navigatorKey,
-      home: CreateStudent(),
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
+      // navigatorKey: navigatorKey,
     );
   }
 }
