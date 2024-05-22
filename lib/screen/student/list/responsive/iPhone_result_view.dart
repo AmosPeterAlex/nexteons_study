@@ -5,6 +5,7 @@ import 'package:nexteons_internship_task/screen/student/list/widget/detail_cart.
 import '../../../../main.dart';
 import '../../../../utils/constants/app_constants.dart';
 import '../../../../utils/constants/color_constants.dart';
+import '../../../../utils/constants/route_names.dart';
 
 class IPhoneResultPage extends StatelessWidget {
   const IPhoneResultPage({super.key});
@@ -13,16 +14,6 @@ class IPhoneResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: ColorConstants.primaryColor,
-      //   toolbarHeight: 70,
-      //   //added fixed height
-      //   title: SizedBox(
-      //     height: 60,
-      //     width: 140,
-      //     child: Image.asset("assets/images/nexteons_logo.png"),
-      //   ),
-      // ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: SingleChildScrollView(
@@ -44,10 +35,12 @@ class IPhoneResultPage extends StatelessWidget {
                     return index == students.length
                         ? InkWell(
                             onTap: () {
-                              GoRouter.of(navigatorKey.currentContext!).go("/home");
+                              // GoRouter.of(navigatorKey.currentContext!)
+                              //     .go("/home");
                               // Get.to(
                               //   CreateStudent(),
                               // );
+                              navigatorKey.currentContext!.goNamed(RouteNames.homePage);
                             },
                             child: Card(
                               child: Container(

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nexteons_internship_task/screen/student/create/view.dart';
 import 'package:nexteons_internship_task/screen/student/list/widget/detail_cart.dart';
 import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
+import 'package:nexteons_internship_task/utils/constants/route_names.dart';
 
 import '../../../../utils/constants/color_constants.dart';
 import '../../../../main.dart';
@@ -17,20 +18,6 @@ class MacResultPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          // Container(
-          //   color: ColorConstants.primaryColor,
-          //   height: size.height,
-          //   width: 323,
-          //   //made it fixed as figma design
-          //   // width: size.width * .35,
-          //   child: Align(
-          //     alignment: Alignment.topCenter,
-          //     child: Padding(
-          //       padding: EdgeInsets.symmetric(vertical: 35, horizontal: 25),
-          //       child: Image.asset("assets/images/nexteons_logo.png"),
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: EdgeInsets.only(
               top: size.height * .06,
@@ -74,8 +61,9 @@ class MacResultPage extends StatelessWidget {
                                 ? InkWell(
                                     onTap: () {
                                       // Get.to(CreateStudent());
-                                      GoRouter.of(navigatorKey.currentContext!)
-                                          .go("/home");
+                                      // GoRouter.of(navigatorKey.currentContext!)
+                                      //     .go("/home");
+                                      navigatorKey.currentContext!.goNamed(RouteNames.homePage);
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
@@ -129,60 +117,3 @@ class MacResultPage extends StatelessWidget {
     );
   }
 }
-
-/*
-class ResultPage extends StatelessWidget {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final int userId;
-  final String district;
-  final int phoneNo;
-  final int pinCode;
-  final String country;
-
-  const ResultPage({
-    Key? key,
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.userId,
-    required this.district,
-    required this.phoneNo,
-    required this.pinCode,
-    required this.country,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Result Page'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('First Name: $firstName', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('Last Name: $lastName', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('Email: $email', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('User ID: $userId', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('District: $district', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('Phone No: $phoneNo', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('Pincode: $pinCode', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text('Country: $country', style: TextStyle(fontSize: 18)),
-          ],
-        ),
-      ),
-    );
-  }
-}
- */

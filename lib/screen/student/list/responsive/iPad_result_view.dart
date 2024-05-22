@@ -7,6 +7,7 @@ import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
 
 import '../../../../utils/constants/color_constants.dart';
 import '../../../../main.dart';
+import '../../../../utils/constants/route_names.dart';
 
 class IPadResultPage extends StatelessWidget {
   const IPadResultPage({super.key});
@@ -17,19 +18,6 @@ class IPadResultPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          // Container(
-          //   color: ColorConstants.primaryColor,
-          //   height: size.height,
-          //   width: 213,
-          //   // width: size.width * .27,
-          //   child: Align(
-          //     alignment: Alignment.topCenter,
-          //     child: Padding(
-          //       padding: EdgeInsets.symmetric(vertical: 35, horizontal: 25),
-          //       child: Image.asset("assets/images/nexteons_logo.png"),
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: EdgeInsets.only(
               top: size.height * .06,
@@ -73,9 +61,10 @@ class IPadResultPage extends StatelessWidget {
                             return index == students.length
                                 ? InkWell(
                                     onTap: () {
-                                      GoRouter.of(navigatorKey.currentContext!)
-                                          .go("/home");
+                                      // GoRouter.of(navigatorKey.currentContext!)
+                                      //     .go("/home");
                                       // Get.to(CreateStudent());
+                                      navigatorKey.currentContext!.goNamed(RouteNames.homePage);
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(

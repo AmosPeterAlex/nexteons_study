@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
 import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
-import 'package:nexteons_internship_task/widgets/save_button.dart';
-import 'package:nexteons_internship_task/widgets/text_field_widget.dart';
+import 'package:nexteons_internship_task/screen/student/create/widgets/save_button.dart';
+import 'package:nexteons_internship_task/screen/student/create/widgets/text_field_widget.dart';
 
 class IPadView extends StatelessWidget {
   final DetailController controller;
