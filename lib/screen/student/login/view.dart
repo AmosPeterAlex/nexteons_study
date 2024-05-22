@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexteons_internship_task/responsive_layout_builder.dart';
 import 'package:nexteons_internship_task/screen/student/login/controller/login_controller.dart';
+import 'package:nexteons_internship_task/screen/student/login/responsive/ipad_login.dart';
 import 'package:nexteons_internship_task/screen/student/login/responsive/iphone_login.dart';
 import 'package:nexteons_internship_task/screen/student/login/responsive/mac_login.dart';
 
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       iPhoneView: IPhoneLogin(
         controler: controler,
       ),
-      iPadView: MacLogin(controler: controler,),
+      iPadView: IPadLogin(controler: controler,),
     );
   }
 }

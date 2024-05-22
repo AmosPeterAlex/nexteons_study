@@ -4,7 +4,7 @@ import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/save_button.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/text_field_widget.dart';
 
-import '../controller/controller.dart';
+import '../controller/detail_controller.dart';
 
 class IPhoneView extends StatelessWidget {
   final DetailController controller;

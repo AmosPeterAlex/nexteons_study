@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 
 class LTextFields extends StatelessWidget {
   final String title;
@@ -8,6 +9,7 @@ class LTextFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size=MediaQuery.of(context).size;
     return Column(
       children: [
         Align(
@@ -17,11 +19,15 @@ class LTextFields extends StatelessWidget {
                 child: Text(title))),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: TextField(
-            decoration: InputDecoration(
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-              hintText: hintText,
+          child: SizedBox(
+            height: size.height*.07,
+            width: size.width*.5,
+            child: TextField(
+              decoration: InputDecoration(
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+                hintText: hintText,
+              ),
             ),
           ),
         ),

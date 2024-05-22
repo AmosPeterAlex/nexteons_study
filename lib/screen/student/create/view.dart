@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexteons_internship_task/responsive_layout_builder.dart';
-import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
+import 'package:nexteons_internship_task/screen/student/create/controller/detail_controller.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPad_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPhone_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/mac_view.dart';

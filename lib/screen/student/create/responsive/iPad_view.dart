@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nexteons_internship_task/screen/student/create/controller/controller.dart';
+import 'package:nexteons_internship_task/screen/student/create/controller/detail_controller.dart';
 import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/save_button.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/text_field_widget.dart';
