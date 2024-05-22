@@ -16,6 +16,6 @@ class MacFrame extends StatelessWidget {
           child: Image.asset(
             "assets/images/nexteons_logo.png",
           )),
-    );;
+    );
   }
 }
