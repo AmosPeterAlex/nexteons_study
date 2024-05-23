@@ -30,10 +30,10 @@ class LoginControler extends GetxController {
       "variables": {
         "loginData": {
           "_deviceType": 0,
-          "_email": "developer.fayizalinp@gmail.com",
-          "_password": "0RneWfb0",
-          // "_email": nameController.text.trim(),
-          // "_password": passController.text.trim(),
+          // "_email": "developer.fayizalinp@gmail.com",
+          // "_password": "0RneWfb0",
+          "_email": nameController.text.trim(),
+          "_password": passController.text.trim(),
           "_userType": 0,
           "deviceId": "",
           "deviceName": "test",
