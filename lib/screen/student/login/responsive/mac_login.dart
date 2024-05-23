@@ -58,8 +58,8 @@ class MacLogin extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      LTextFields(title: "UserName or Email"),
-                      LTextFields(title: 'Password'),
+                      LTextFields(title: "UserName or Email",textCntrler: controler.nameController,),
+                      LTextFields(title: 'Password',textCntrler: controler.passController,),
                       Align(
                           alignment: Alignment.bottomRight,
                           child: Text(

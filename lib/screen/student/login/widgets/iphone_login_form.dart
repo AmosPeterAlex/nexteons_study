@@ -6,14 +6,15 @@ import '../../../../utils/constants/color_constants.dart';
 class IPhoneFormWidget extends StatelessWidget {
   final String firstTitle;
   final String secondTitle;
-
+  final TextEditingController? nameCntrl;
+  final TextEditingController? passCntrl;
   final void Function()? onLoginPress;
 
   const IPhoneFormWidget(
       {super.key,
       this.onLoginPress,
       required this.firstTitle,
-      required this.secondTitle});
+      required this.secondTitle, this.nameCntrl, this.passCntrl});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class IPhoneFormWidget extends StatelessWidget {
             height: size.height * .07,
             width: size.width * .87,
             child: TextFormField(
+              controller: nameCntrl,
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
@@ -51,6 +53,7 @@ class IPhoneFormWidget extends StatelessWidget {
             height: size.height * .07,
             width: size.width * .87,
             child: TextFormField(
+              controller: passCntrl,
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),

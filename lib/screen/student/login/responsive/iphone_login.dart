@@ -37,6 +37,8 @@ class IPhoneLogin extends StatelessWidget {
                 firstTitle: 'UserName or Email',
                 secondTitle: 'Password',
                 onLoginPress: controler.onLogin,
+                nameCntrl: controler.nameController,
+                passCntrl: controler.passController,
               ),
             ],
           ),

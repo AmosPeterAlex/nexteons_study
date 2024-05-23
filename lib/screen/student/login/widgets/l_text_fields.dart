@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class LTextFields extends StatelessWidget {
   final String title;
   final String? hintText;
+  final TextEditingController? textCntrler;
 
-  const LTextFields({super.key, required this.title, this.hintText});
+  const LTextFields({super.key, required this.title, this.hintText, this.textCntrler});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class LTextFields extends StatelessWidget {
             height: size.height*.07,
             width: size.width*.5,
             child: TextField(
+              controller: textCntrler,
               decoration: InputDecoration(
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
