@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:nexteons_internship_task/screen/student/create/view.dart';
+import 'package:nexteons_internship_task/screen/student/data_grid/responsive/mac_data_grid.dart';
 import 'package:nexteons_internship_task/screen/student/data_grid/view.dart';
 import 'package:nexteons_internship_task/screen/student/list/view.dart';
 import 'package:nexteons_internship_task/screen/student/login/view.dart';
@@ -42,7 +43,7 @@ final router = GoRouter(
     GoRoute(
       name: RouteNames.gridPage,
       path: '/dataGrid',
-      builder: (context, state) => DataGridExample(),
+      builder: (context, state) => DataGridView(),
     )
   ],
 );
