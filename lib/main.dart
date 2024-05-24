@@ -3,18 +3,10 @@ import 'package:get/get.dart';
 import 'package:nexteons_internship_task/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'model/model.dart';
+// import 'model/model.dart';
 
-RxList<Student> students = [
-  Student(
-      firstname: "Amos",
-      secondName: "Peter",
-      email: "amos@gmail.com",
-      id: 123654,
-      district: "Kollam",
-      phoneNumber: 987654321,
-      pincode: 2244557,
-      country: "India")
+RxList<dynamic> students = [
+
 ].obs;
 
 void main() {

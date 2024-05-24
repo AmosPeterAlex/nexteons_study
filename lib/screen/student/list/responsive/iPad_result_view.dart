@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nexteons_internship_task/screen/student/create/view.dart';
 import 'package:nexteons_internship_task/screen/student/list/widget/detail_cart.dart';
 import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
 
-import '../../../../utils/constants/color_constants.dart';
 import '../../../../main.dart';
 import '../../../../utils/constants/route_names.dart';
 
