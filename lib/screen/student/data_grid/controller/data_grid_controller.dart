@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 
-import '../../../../model/data_grid_model.dart';
+import '../../../../model/data_grid_example_model.dart';
 
 class DataGridControler extends GetxController {
   RxList<Employee> getEmployeeData() {
     return [
-      Employee(10001, 'Amos', 'Project Lead', 20000),
-      Employee(10002, 'Najeeb', 'Manager', 30000),
-      Employee(10003, 'Sajin', 'Developer', 15000),
-      Employee(10004, 'Sreejith', 'Designer', 15000),
-      Employee(10005, 'Martin', 'Developer', 15000),
+      Employee(10001, 'Amos', 'Project Lead', 40000),
+      Employee(10002, 'Najeeb', 'Manager', 50000),
+      Employee(10003, 'Sajin', 'Developer', 50000),
+      Employee(10004, 'Sreejith', 'Designer', 50000),
+      Employee(10005, 'Anuvind', 'Developer', 15000),
       Employee(10006, 'Newberry', 'Developer', 15000),
       Employee(10007, 'Balnc', 'Developer', 15000),
       Employee(10008, 'Perry', 'Developer', 15000),

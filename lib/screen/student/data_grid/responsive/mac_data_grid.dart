@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nexteons_internship_task/model/data_grid_model.dart';
+import 'package:nexteons_internship_task/model/data_grid_example_model.dart';
 import 'package:nexteons_internship_task/screen/student/data_grid/controller/data_grid_controller.dart';
 import 'package:nexteons_internship_task/screen/student/data_grid/controller/data_source.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
@@ -17,7 +17,7 @@ class MacDataGrid extends StatefulWidget {
 }
 
 class _MacDataGridState extends State<MacDataGrid> {
-  // final DataGridController controller = DataGridController();
+  final DataGridController controller = DataGridController();
 
   late EmployeeDataSource employeeDataSource;
 
@@ -30,31 +30,15 @@ class _MacDataGridState extends State<MacDataGrid> {
     super.initState();
   }
 
-  // List<Employee> getEmployeeData() {
-  //   return [
-  //     Employee(10001, 'Amos', 'Project Lead', 20000),
-  //     Employee(10002, 'Najeeb', 'Manager', 30000),
-  //     Employee(10003, 'Sajin', 'Developer', 15000),
-  //     Employee(10004, 'Sreejith', 'Designer', 15000),
-  //     Employee(10005, 'Martin', 'Developer', 15000),
-  //     Employee(10006, 'Newberry', 'Developer', 15000),
-  //     Employee(10007, 'Balnc', 'Developer', 15000),
-  //     Employee(10008, 'Perry', 'Developer', 15000),
-  //     Employee(10009, 'Gable', 'Developer', 15000),
-  //     Employee(10010, 'Grimes', 'Developer', 15000)
-  //   ];
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SfDataGrid(
-        gridLinesVisibility: GridLinesVisibility.both,
-        // allowColumnsDragging: true,allowEditing: true,
-        // headerGridLinesVisibility: GridLinesVisibility.both,
         source: employeeDataSource,
         columns: [
           GridColumn(
+              
               columnName: 'id',
               label: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -92,7 +76,10 @@ class _MacDataGridState extends State<MacDataGrid> {
                   ))),
         ],
         selectionMode: SelectionMode.multiple,
-        // controller: controller,
+        gridLinesVisibility: GridLinesVisibility.both,
+        // allowColumnsDragging: true,allowEditing: true,
+        // headerGridLinesVisibility: GridLinesVisibility.both,
+        controller: controller,
       ),
     );
   }

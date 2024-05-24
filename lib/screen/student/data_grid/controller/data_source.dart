@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
-import 'package:nexteons_internship_task/model/data_grid_model.dart';
+import 'package:flutter/material.dart';
+import 'package:nexteons_internship_task/model/data_grid_example_model.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class EmployeeDataSource extends DataGridSource {
