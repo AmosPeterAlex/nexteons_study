@@ -42,7 +42,7 @@ class LoginControler extends GetxController {
       }
     };
     // email & password
-    // developer.fayizalinp@gmail.com
+    // developer.fayizalinp@gmail.com  0RneWfb0
     // 0RneWfb0
     try {
       final response = await loginService.logService(payload);

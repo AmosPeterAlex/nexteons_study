@@ -3,4 +3,5 @@ class RouteNames {
   static String listPage = "listPage";
 
   static String loginPage = "loginPage";
+  static String gridPage = "gridPage";
 }
