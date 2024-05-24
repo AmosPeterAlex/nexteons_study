@@ -25,7 +25,7 @@ class DetailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.symmetric(horizontal:10, vertical: 20),
       // padding: EdgeInsets.symmetric(horizontal: size.width*.01, vertical: size.height*.008),

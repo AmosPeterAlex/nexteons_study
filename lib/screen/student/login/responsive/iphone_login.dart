@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nexteons_internship_task/screen/student/login/controller/login_controller.dart';
 import 'package:nexteons_internship_task/screen/student/login/widgets/floating_button.dart';
 import 'package:nexteons_internship_task/screen/student/login/widgets/iphone_login_form.dart';
-import 'package:nexteons_internship_task/screen/student/login/widgets/l_text_fields.dart';
 import 'package:nexteons_internship_task/screen/student/login/widgets/login_heading.dart';
-import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 
 class IPhoneLogin extends StatelessWidget {
   final LoginControler controler;

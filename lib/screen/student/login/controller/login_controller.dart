@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
+// import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nexteons_internship_task/screen/student/login/service/login_service.dart';
+import 'package:nexteons_internship_task/repositary/login/login_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../utils/constants/app_constants.dart';
@@ -15,7 +15,6 @@ class LoginControler extends GetxController {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
-  // var value = {}.obs;
   var accessToken = '';
 
   void onLogin() async {
@@ -47,22 +46,22 @@ class LoginControler extends GetxController {
     // 0RneWfb0
     try {
       final response = await loginService.logService(payload);
-      log("response in controller ----> $response");
-      log("access token ->${response['data']['Auth_Login']}");
+      // log("response in controller ----> $response");
+      // log("access token ->${response['data']['Auth_Login']}");
       if (response != null &&
           response["data"] != null &&
           response['data']['Auth_Login'] != null) {
         accessToken = response['data']['Auth_Login']['accessToken'];
-        print("access token. value--->>>>>${accessToken}");
-        log("response[data] in controller log--> ${response["data"]} ");
+        // print("access token. value--->>>>>${accessToken}");
+        // log("response[data] in controller log--> ${response["data"]} ");
         // var token= response['data']['Auth_Login']['accessToken'];
         storeReceivedData(accessToken);
         GoRouter.of(navigatorKey.currentContext!).goNamed(RouteNames.listPage);
       } else {
-        print('Error: Auth_Login key not found in response');
+        // print('Error: Auth_Login key not found in response');
       }
     } catch (e) {
-      log("e---> $e");
+      // log("e---> $e");
     }
   }
 

@@ -1,3 +1,8 @@
+///as given in the pdf
+///change device type to 0 or 1
+///grant_type to "password"
+///
+
 Map<String, dynamic> payload = {
   "query": '''
 query Auth_Login(\$loginData: LoginInput!) {

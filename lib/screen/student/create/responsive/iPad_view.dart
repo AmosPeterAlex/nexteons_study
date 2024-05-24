@@ -1,12 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nexteons_internship_task/screen/student/create/controller/detail_controller.dart';
 import 'package:nexteons_internship_task/utils/constants/color_constants.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/save_button.dart';
 import 'package:nexteons_internship_task/screen/student/create/widgets/text_field_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class IPadView extends StatelessWidget {
   final DetailController controller;
@@ -38,8 +35,8 @@ class IPadView extends StatelessWidget {
                     ),
                     Text(
                       "BASIC DETAILS",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 28),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                     ),
                   ],
                 ),
@@ -53,14 +50,13 @@ class IPadView extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: size.width * .045),
                       child: GridView(
                         shrinkWrap: true,
-                        gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
-                                //others to be made responsive
-                                crossAxisCount: 2,
-                                childAspectRatio: 14,
-                                mainAxisExtent: 110,
-                                mainAxisSpacing: 17,
-                                crossAxisSpacing: size.width * .07),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            //others to be made responsive
+                            crossAxisCount: 2,
+                            childAspectRatio: 14,
+                            mainAxisExtent: 110,
+                            mainAxisSpacing: 17,
+                            crossAxisSpacing: size.width * .07),
                         children: [
                           Column(
                             children: [
@@ -209,20 +205,6 @@ class IPadView extends StatelessWidget {
                               )
                             ],
                           ),
-                          // MaterialButton(
-                          //   onPressed: () async {
-                          //     SharedPreferences sharedPreferences =
-                          //         await SharedPreferences.getInstance();
-                          //     String? tokenJsonString =
-                          //         sharedPreferences.getString("LOGIN");
-                          //     bool? trueOrfalse =
-                          //         sharedPreferences.getBool("STATUS");
-                          //     log("message---> \nto check shared prefernces is working\n\n ${tokenJsonString}");
-                          //     log("$tokenJsonString");
-                          //     log("trur ir false in shared prefernces--->>${trueOrfalse}");
-                          //   },
-                          //   child: Text("Sample button"),
-                          // )
                         ],
                       ),
                     ),
