@@ -103,6 +103,18 @@ class ApiDataGridMac extends StatelessWidget {
                 ),
                 actions: [
                   MaterialButton(
+                    shape: StadiumBorder(),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Cancel"),
+                    color: ColorConstants.cardFillColor,
+                  ),
+                  SizedBox(
+                    width: 3,
+                  ),
+                  MaterialButton(
+                    shape: StadiumBorder(),
                     onPressed: () {
                       Navigator.pop(context);
                     },
