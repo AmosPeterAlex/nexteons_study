@@ -15,12 +15,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late LoginControler controler;
-//bakia dikan ond
+
   final String tag = DateTime.now().toString();
 
   @override
   void initState() {
-    controler = Get.put(LoginControler());
+    controler = Get.put(LoginControler(), tag: tag);
     // controller = Get.put(LoginControler(), tag: tag);
     super.initState();
   }
@@ -34,11 +34,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayoutBuilder(
-      macView: MacLogin(controler: controler,),
+      macView: MacLogin(
+        controler: controler,
+      ),
       iPhoneView: IPhoneLogin(
         controler: controler,
       ),
-      iPadView: IPadLogin(controler: controler,),
+      iPadView: IPadLogin(
+        controler: controler,
+      ),
     );
   }
 }

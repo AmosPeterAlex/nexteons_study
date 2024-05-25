@@ -1,7 +1,6 @@
 //last to be added
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:nexteons_internship_task/responsive_layout_builder.dart';
 import 'package:nexteons_internship_task/screen/frame/frame_view.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/controller/api_data_grid_controller.dart';
@@ -22,6 +21,9 @@ class _ApiDataGridViewState extends State<ApiDataGridView> {
   @override
   void initState() {
     controller = Get.put(ApiDataGridController(), tag: tag);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.onApiGridDataGet();
+    });
     super.initState();
   }
 
@@ -35,9 +37,15 @@ class _ApiDataGridViewState extends State<ApiDataGridView> {
   Widget build(BuildContext context) {
     return FrameView(
       child: ResponsiveLayoutBuilder(
-          macView: ApiDataGridMac(controller: controller),
-          iPhoneView: ApiDataGridMac(controller: controller),
-          iPadView: ApiDataGridMac(controller: controller)),
+          macView: ApiDataGridMac(
+            controller: controller,
+          ),
+          iPhoneView: ApiDataGridMac(
+            controller: controller,
+          ),
+          iPadView: ApiDataGridMac(
+            controller: controller,
+          )),
     );
   }
 }

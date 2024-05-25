@@ -6,6 +6,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class MacDataGrid extends StatefulWidget {
   final DataGridControler controler = DataGridControler();
+
   // final DataGridControler controler;
   MacDataGrid({
     super.key,
@@ -30,7 +31,6 @@ class _MacDataGridState extends State<MacDataGrid> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,6 @@ class _MacDataGridState extends State<MacDataGrid> {
         source: employeeDataSource,
         columns: [
           GridColumn(
-              
               columnName: 'id',
               label: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),

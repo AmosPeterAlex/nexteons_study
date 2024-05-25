@@ -9,6 +9,7 @@ import 'package:nexteons_internship_task/utils/constants/size_check.dart';
 
 class FrameView extends StatefulWidget {
   const FrameView({super.key, required this.child});
+
   final Widget child;
 
   @override
@@ -18,6 +19,7 @@ class FrameView extends StatefulWidget {
 class _FrameViewState extends State<FrameView> {
   late FrameController controller;
   final String tag = DateTime.now().toString();
+
   @override
   void initState() {
     controller = Get.put(FrameController(), tag: tag);

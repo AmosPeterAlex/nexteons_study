@@ -1,12 +1,13 @@
-
-
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nexteons_internship_task/model/api_data_grid_model.dart';
 import 'package:nexteons_internship_task/repositary/api_data_grid/data_grid_service.dart';
 
 class ApiDataGridController extends GetxController {
   final DataGridService service = Get.put(DataGridService());
+  var dpiRateList = <ListElement>[].obs;
+
   Future<void> onApiGridDataGet() async {
     Map<String, dynamic> payload = {
       "query": '''
@@ -31,18 +32,25 @@ class ApiDataGridController extends GetxController {
         }
       }
     };
-  
+
     try {
+      // var resBody= await GetDpiRate
       final response = await service.gridFetch(payload);
       // log("response in controller ----> $response");
       // log("access token ->${response['data']['Auth_Login']}");
-      if (response != null && response["data"] != null ) {
+      // if(response.statusCode ==200){
+      if (response != null && response["data"] != null) {
         // accessToken = response['data']['Auth_Login']['accessToken'];
         // print("access token. value--->>>>>${accessToken}");
-        log("response[data] in controller log--> ${response["data"]["DpiRate_List"]} ");
+        log("response[data] in controller log--> ${response["data"]["DpiRate_List"]["list"]} ");
+        // ApiDataGridModel apiDataGridModel = ApiDataGridModel.fromJson(
+        // jsonDecode(response["data"]["DpiRate_List"]));
+        // apiDataGridModel.value = apiDataGridModel.data?.dpiRateList?.list ?? [];
+
         // var token= response['data']['Auth_Login']['accessToken'];
-        // storeReceivedData(accessToken);
-        // GoRouter.of(navigatorKey.currentContext!).goNamed(RouteNames.listPage);
+        ApiDataGridModel apiDataGridModel =
+            ApiDataGridModel.fromJson(response);
+        dpiRateList.value = apiDataGridModel.data?.dpiRateList?.list ?? [];
       } else {
         // print('Error: Auth_Login key not found in response');
       }
@@ -51,3 +59,8 @@ class ApiDataGridController extends GetxController {
     }
   }
 }
+/*
+ final response = await service.gridFetch(payload);
+ response["data"]["DpiRate_List"]["list"]
+  var dpiRateList = <ListElement>[].obs;
+*/

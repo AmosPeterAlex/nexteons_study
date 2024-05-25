@@ -7,6 +7,8 @@ import 'dart:convert';
 class ApiDataGridModel {
     Data? data;
 
+  // Data? value;
+
     ApiDataGridModel({
         this.data,
     });
