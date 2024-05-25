@@ -21,8 +21,8 @@ class _ApiDataGridViewState extends State<ApiDataGridView> {
   @override
   void initState() {
     controller = Get.put(ApiDataGridController(), tag: tag);
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   controller.onApiGridDataGet();});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.getData();});
     super.initState();
   }
 

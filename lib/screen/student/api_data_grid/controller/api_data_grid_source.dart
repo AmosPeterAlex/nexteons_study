@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nexteons_internship_task/model/api_data_grid_model.dart';
+import 'package:nexteons_internship_task/screen/student/api_data_grid/controller/api_data_grid_controller.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class ApiDataGridSource extends DataGridSource {
   List<DataGridRow> dataGridRows = [];
-// List<ListElement> dpiRateList;
+  // final ApiDataGridController controller;
+
   ApiDataGridSource(List<ListElement> dpiRateList) {
     dataGridRows = dpiRateList.map<DataGridRow>((dataGridRow) {
       return DataGridRow(cells: [
