@@ -5,9 +5,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 // import 'model/model.dart';
 
-RxList<dynamic> students = [
-
-].obs;
+RxList<dynamic> students = [].obs;
 
 void main() {
   setPathUrlStrategy();
@@ -24,7 +22,6 @@ class MyApp extends StatelessWidget {
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
-      // navigatorKey: navigatorKey,
     );
   }
 }

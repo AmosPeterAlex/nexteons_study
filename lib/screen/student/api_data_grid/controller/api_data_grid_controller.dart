@@ -6,7 +6,15 @@ import 'package:nexteons_internship_task/repositary/api_data_grid/data_grid_serv
 
 class ApiDataGridController extends GetxController {
   final DataGridService service = Get.put(DataGridService());
+   
   var dpiRateList = <ListElement>[].obs;
+  var isLoading = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    onApiGridDataGet();
+  }
 
   Future<void> onApiGridDataGet() async {
     Map<String, dynamic> payload = {
@@ -35,32 +43,26 @@ class ApiDataGridController extends GetxController {
 
     try {
       // var resBody= await GetDpiRate
+      isLoading(true);
       final response = await service.gridFetch(payload);
-      // log("response in controller ----> $response");
-      // log("access token ->${response['data']['Auth_Login']}");
-      // if(response.statusCode ==200){
+      
       if (response != null && response["data"] != null) {
-        // accessToken = response['data']['Auth_Login']['accessToken'];
-        // print("access token. value--->>>>>${accessToken}");
-        log("response[data] in controller log--> ${response["data"]["DpiRate_List"]["list"]} ");
+        
+        log("response['data']['DpiRate_List']['list'] in controller log--> ${response["data"]["DpiRate_List"]["list"]} ");
         // ApiDataGridModel apiDataGridModel = ApiDataGridModel.fromJson(
         // jsonDecode(response["data"]["DpiRate_List"]));
         // apiDataGridModel.value = apiDataGridModel.data?.dpiRateList?.list ?? [];
-
-        // var token= response['data']['Auth_Login']['accessToken'];
-        ApiDataGridModel apiDataGridModel =
-            ApiDataGridModel.fromJson(response);
-        dpiRateList.value = apiDataGridModel.data?.dpiRateList?.list ?? [];
+        ApiDataGridModel apiDataGridModel = ApiDataGridModel.fromJson(response);
+        // dpiRateList.value = apiDataGridModel.data?.dpiRateList?.list ?? [];
+        log("_______>>>>>>>>>${response["data"]["DpiRate_List"]["list"]}");
+        dpiRateList.addAll(apiDataGridModel.data?.dpiRateList?.list ?? []);
       } else {
-        // print('Error: Auth_Login key not found in response');
+        print('_________found in response');
       }
     } catch (e) {
-      // log("e---> $e");
+      log("e------> $e");
+    }finally{
+      isLoading(false);
     }
   }
 }
-/*
- final response = await service.gridFetch(payload);
- response["data"]["DpiRate_List"]["list"]
-  var dpiRateList = <ListElement>[].obs;
-*/

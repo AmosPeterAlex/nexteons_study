@@ -4,7 +4,7 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class ApiDataGridSource extends DataGridSource {
   List<DataGridRow> dataGridRows = [];
-
+// List<ListElement> dpiRateList;
   ApiDataGridSource(List<ListElement> dpiRateList) {
     dataGridRows = dpiRateList.map<DataGridRow>((dataGridRow) {
       return DataGridRow(cells: [
@@ -35,3 +35,4 @@ class ApiDataGridSource extends DataGridSource {
     );
   }
 }
+

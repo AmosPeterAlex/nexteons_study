@@ -7,7 +7,7 @@ import 'package:nexteons_internship_task/screen/student/api_data_grid/controller
 import 'package:nexteons_internship_task/screen/student/api_data_grid/responsive/api_data_grid.dart';
 
 class ApiDataGridView extends StatefulWidget {
-  // final ApiDataGridController controller;
+ 
   const ApiDataGridView({super.key});
 
   @override
@@ -21,9 +21,8 @@ class _ApiDataGridViewState extends State<ApiDataGridView> {
   @override
   void initState() {
     controller = Get.put(ApiDataGridController(), tag: tag);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.onApiGridDataGet();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   controller.onApiGridDataGet();});
     super.initState();
   }
 
