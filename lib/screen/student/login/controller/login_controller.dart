@@ -48,14 +48,15 @@ class LoginControler extends GetxController {
       final response = await loginService.logService(payload);
       // log("response in controller ----> $response");
       // log("access token ->${response['data']['Auth_Login']}");
-      if (response != null &&
-          response["data"] != null &&
-          response['data']['Auth_Login'] != null) {
-        accessToken = response['data']['Auth_Login']['accessToken'];
+      if (response != null
+          // response["data"] != null &&
+          // response['data']['Auth_Login'] != null
+      ) {
+        // accessToken = ;
         // print("access token. value--->>>>>${accessToken}");
         // log("response[data] in controller log--> ${response["data"]} ");
         // var token= response['data']['Auth_Login']['accessToken'];
-        storeReceivedData(accessToken);
+        storeReceivedData(response['data']['Auth_Login']['accessToken']);
         GoRouter.of(navigatorKey.currentContext!).goNamed(RouteNames.listPage);
       } else {
         // print('Error: Auth_Login key not found in response');
@@ -67,7 +68,7 @@ class LoginControler extends GetxController {
 
   storeReceivedData(accessToken) async {
     sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("LOGIN", json.encode(accessToken));
+    sharedPreferences.setString("LOGIN", accessToken);
     // sharedPreferences.setBool("STATUS", true);
   }
 }

@@ -19,6 +19,7 @@ class ApiDataGridController extends GetxController {
     isLoading = true.obs;
     Map<String, String> headers = await getApiHeader();
     if (headers.isEmpty) {
+      print("999999999999999999999999 $headers");
       log("failed to get header");
       return;
     }
@@ -46,6 +47,7 @@ class ApiDataGridController extends GetxController {
     };
 
     try {
+      print("88888888888888888$headers");
       var response =
           await DataGridService.fetchData(header: headers, data: payload);
       if (response["data"] != null) {
@@ -127,12 +129,101 @@ mutation DPI_Rate_Create(\$createDpiRateInput: CreateDpiRateInput!) {
     if (token != null) {
       return {
         "X-Tenant-Id": "RL0582",
-        "Authorization": "Bearer ${json.decode(token)}"
+        "Authorization": "Bearer $token"
       };
       log("$token");
     } else {
       log(" ---token not geting from shared prefernce---");
       return {};
+    }
+  }
+
+  editData({String? id}) async {
+    log("message");
+    Map<String, String> headers = await getApiHeader();
+    if (headers.isEmpty) {
+      log("failed to get api header");
+    }
+    Map<String, dynamic> payload = {
+      'query': '''
+mutation DPI_Rate_Update(\$updateDpiRateInput: UpdateDpiRateInput!) {
+  DPI_Rate_Update(updateDpiRateInput: \$updateDpiRateInput) {
+    _id
+  }
+}
+''',
+      'variables': {
+        "updateDpiRateInput": {
+          "_branchId": "6631da5ce9efa0bd84a86852",
+          "_editCount": -1,
+          "_id": id,
+          "_name": nameController.text,
+          "_rate": int.tryParse(rateController.text)
+        }
+      },
+    };
+    try {
+      var responsebody =
+          await DataGridService.fetchData(header: headers, data: payload);
+      log("{$responsebody['data}");
+      if (responsebody["data"] != null) {
+        log("----->>>iff{$responsebody['data}");
+        // AppSnackbar.oneTimeSnackBar("Success",
+        //     context: navigatorKey.currentContext!, bgColor: Colors.green);
+        await getData();
+        nameController.clear();
+        rateController.clear();
+      } else {
+        log("elsseee{$responsebody['data}");
+        // AppSnackbar.oneTimeSnackBar("Failed to Fetch Data",
+        //     context: navigatorKey.currentContext!, bgColor: Colors.red);
+      }
+      nameController.clear();
+      rateController.clear();
+      Navigator.of(navigatorKey.currentContext!).pop();
+    } catch (e) {
+      log("An error occurred: $e");
+    }
+  }
+  void delete({String? id}) async {
+
+    isLoading = true.obs;
+    Map<String, String> headers = await getApiHeader();
+    if (headers.isEmpty) {
+      var message = "Failed to get API headers";
+      log(message);
+      return;
+    }
+
+    Map<String, dynamic> payload = {
+      'query': '''
+mutation DPI_Rate_StatusChange(\$statusChange: StatusChangeInput!) {
+  DPI_Rate_StatusChange(statusChange: \$statusChange) {
+    message
+}
+}
+''',
+      'variables': {
+        "statusChange": {
+          "_editCount": -1,
+          "_logDescription": null,
+          "_status": "DELETE",
+          "ids": id
+        }
+      }
+    };
+
+    try {
+      var responsebody =
+      await DataGridService.fetchData(header: headers, data: payload);
+      if (responsebody["data"] != null) {
+        await getData();
+      } else {
+
+      }
+      isLoading = false.obs;
+    } catch (e) {
+      log("An error occurred: $e");
     }
   }
 }

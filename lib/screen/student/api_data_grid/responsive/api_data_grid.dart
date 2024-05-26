@@ -10,6 +10,7 @@ import '../widgets/create_floating_nav_button.dart';
 
 class ApiDataGridMac extends StatelessWidget {
   final ApiDataGridController controller;
+
   ApiDataGridMac({super.key, required this.controller});
 
   @override
@@ -17,7 +18,7 @@ class ApiDataGridMac extends StatelessWidget {
     return Scaffold(
       body: Obx(
         () {
-          final apiDataGridSource = ApiDataGridSource(controller.dpiRateList);
+          final apiDataGridSource = ApiDataGridSource(controller);
           if (controller.isLoading.value) {
             return Center(child: CircularProgressIndicator());
           }
@@ -63,6 +64,30 @@ class ApiDataGridMac extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: Text(
                     'Rate',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+              GridColumn(
+                columnName: 'edit',
+                label: Container(
+                  color: ColorConstants.textFieldFillColor,
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'Edit',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+              GridColumn(
+                columnName: 'delete',
+                label: Container(
+                  color: ColorConstants.textFieldFillColor,
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    'Delete',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
@@ -115,7 +140,7 @@ class ApiDataGridMac extends StatelessWidget {
                   ),
                   MaterialButton(
                     shape: StadiumBorder(),
-                    onPressed:controller.addData,
+                    onPressed: controller.addData,
                     child: Text("ADD"),
                     color: ColorConstants.loginButtonColor,
                   )

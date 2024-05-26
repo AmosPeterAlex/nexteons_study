@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:nexteons_internship_task/screen/frame/frame_view.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/view.dart';
 import 'package:nexteons_internship_task/screen/student/create/view.dart';
 import 'package:nexteons_internship_task/screen/student/data_grid/view.dart';
@@ -25,6 +26,7 @@ final router = GoRouter(
     }
   },
   routes: [
+
     GoRoute(
       name: RouteNames.loginPage,
       path: '/login',
@@ -45,7 +47,7 @@ final router = GoRouter(
       path: '/dataGrid',
       builder: (context, state) => DataGridView(),
     ),
-     GoRoute(
+    GoRoute(
       name: RouteNames.apiGridPage,
       path: '/apiDataGrid',
       builder: (context, state) => ApiDataGridView(),
