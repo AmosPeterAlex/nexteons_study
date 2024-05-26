@@ -32,17 +32,15 @@ class _CreateStudentState extends State<CreateStudent> {
 
   @override
   Widget build(BuildContext context) {
-    return FrameView(
-      child: ResponsiveLayoutBuilder(
-        macView: MacView(
-          controller: controller,
-        ),
-        iPhoneView: IPhoneView(
-          controller: controller,
-        ),
-        iPadView: IPadView(
-          controller: controller,
-        ),
+    return ResponsiveLayoutBuilder(
+      macView: MacView(
+        controller: controller,
+      ),
+      iPhoneView: IPhoneView(
+        controller: controller,
+      ),
+      iPadView: IPadView(
+        controller: controller,
       ),
     );
   }

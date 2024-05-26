@@ -35,18 +35,16 @@ class _ApiDataGridViewState extends State<ApiDataGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return FrameView(
-      child: ResponsiveLayoutBuilder(
-          macView: ApiDataGridMac(
-            controller: controller,
-          ),
-          iPhoneView: ApiDataGridMac(
-            controller: controller,
-          ),
-          iPadView: ApiDataGridMac(
-            controller: controller,
-          )),
-    );
+    return ResponsiveLayoutBuilder(
+        macView: ApiDataGridMac(
+          controller: controller,
+        ),
+        iPhoneView: ApiDataGridMac(
+          controller: controller,
+        ),
+        iPadView: ApiDataGridMac(
+          controller: controller,
+        ));
   }
 }
 /*

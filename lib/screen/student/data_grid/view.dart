@@ -9,10 +9,9 @@ class DataGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FrameView(
-        child: ResponsiveLayoutBuilder(
-            macView: MacDataGrid(),
-            iPhoneView: MacDataGrid(),
-            iPadView: MacDataGrid()));
+    return ResponsiveLayoutBuilder(
+        macView: MacDataGrid(),
+        iPhoneView: MacDataGrid(),
+        iPadView: MacDataGrid());
   }
 }

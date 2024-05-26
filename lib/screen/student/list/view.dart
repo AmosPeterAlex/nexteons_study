@@ -15,11 +15,9 @@ class ListStudent extends StatefulWidget {
 class _ListStudentState extends State<ListStudent> {
   @override
   Widget build(BuildContext context) {
-    return FrameView(
-      child: ResponsiveLayoutBuilder(
-          macView: MacResultPage(),
-          iPhoneView: IPhoneResultPage(),
-          iPadView: IPadResultPage()),
-    );
+    return ResponsiveLayoutBuilder(
+        macView: MacResultPage(),
+        iPhoneView: IPhoneResultPage(),
+        iPadView: IPadResultPage());
   }
 }
