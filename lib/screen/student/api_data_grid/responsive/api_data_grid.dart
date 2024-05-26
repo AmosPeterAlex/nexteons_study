@@ -83,7 +83,7 @@ class ApiDataGridMac extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     TextField(
-                      // controller: ,
+                      controller: controller.nameController,
                       decoration: InputDecoration(
                           hintText: "Name",
                           border: OutlineInputBorder(
@@ -93,7 +93,7 @@ class ApiDataGridMac extends StatelessWidget {
                       height: 10,
                     ),
                     TextField(
-                      // controller: ,
+                      controller: controller.rateController,
                       decoration: InputDecoration(
                           hintText: "Rate",
                           border: OutlineInputBorder(
@@ -115,9 +115,7 @@ class ApiDataGridMac extends StatelessWidget {
                   ),
                   MaterialButton(
                     shape: StadiumBorder(),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed:controller.addData,
                     child: Text("ADD"),
                     color: ColorConstants.loginButtonColor,
                   )
