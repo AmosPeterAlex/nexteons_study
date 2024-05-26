@@ -26,32 +26,38 @@ final router = GoRouter(
     }
   },
   routes: [
-
+    ShellRoute(
+        builder: (context, state, child) {
+          return FrameView(child: child);
+        },
+        routes: [
+          GoRoute(
+              name: RouteNames.listPage,
+              path: '/result',
+              builder: (context, state) => ListStudent(),
+              routes: [
+                GoRoute(
+                  name: RouteNames.homePage,
+                  path: 'home',
+                  builder: (context, state) => CreateStudent(),
+                ),
+              ]),
+          GoRoute(
+            name: RouteNames.gridPage,
+            path: '/dataGrid',
+            builder: (context, state) => DataGridView(),
+          ),
+          GoRoute(
+            name: RouteNames.apiGridPage,
+            path: '/apiDataGrid',
+            builder: (context, state) => ApiDataGridView(),
+          )
+        ]),
     GoRoute(
       name: RouteNames.loginPage,
       path: '/login',
       builder: (context, state) => LoginPage(),
     ),
-    GoRoute(
-      name: RouteNames.homePage,
-      path: '/home',
-      builder: (context, state) => CreateStudent(),
-    ),
-    GoRoute(
-      name: RouteNames.listPage,
-      path: '/result',
-      builder: (context, state) => ListStudent(),
-    ),
-    GoRoute(
-      name: RouteNames.gridPage,
-      path: '/dataGrid',
-      builder: (context, state) => DataGridView(),
-    ),
-    GoRoute(
-      name: RouteNames.apiGridPage,
-      path: '/apiDataGrid',
-      builder: (context, state) => ApiDataGridView(),
-    )
   ],
 );
 
