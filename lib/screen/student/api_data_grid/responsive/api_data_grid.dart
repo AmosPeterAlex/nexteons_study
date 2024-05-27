@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nexteons_internship_task/model/api_data_grid_model.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/controller/api_data_grid_controller.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/controller/api_data_grid_source.dart';
 import 'package:nexteons_internship_task/utils/constants/color_constants.dart';

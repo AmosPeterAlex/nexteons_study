@@ -3,7 +3,6 @@ import 'package:nexteons_internship_task/responsive_layout_builder.dart';
 import 'package:nexteons_internship_task/screen/student/list/responsive/iPad_result_view.dart';
 import 'package:nexteons_internship_task/screen/student/list/responsive/iPhone_result_view.dart';
 import 'package:nexteons_internship_task/screen/student/list/responsive/mac_result_view.dart';
-import 'package:nexteons_internship_task/screen/frame/frame_view.dart';
 
 class ListStudent extends StatefulWidget {
   const ListStudent({super.key});

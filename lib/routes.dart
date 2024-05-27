@@ -17,6 +17,7 @@ final router = GoRouter(
       return "/login";
     } else {
       if (state.fullPath == "/login") {
+        //full path check later
         print(
             "state.fullpath->${state.fullPath}state.name->${state.name}state.error${state.error}");
         return "/result";
@@ -39,6 +40,7 @@ final router = GoRouter(
                 GoRoute(
                   name: RouteNames.homePage,
                   path: 'home',
+                  //y remove / from home page
                   builder: (context, state) => CreateStudent(),
                 ),
               ]),

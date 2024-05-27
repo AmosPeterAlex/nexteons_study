@@ -5,7 +5,6 @@ import 'package:nexteons_internship_task/screen/student/create/controller/detail
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPad_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/iPhone_view.dart';
 import 'package:nexteons_internship_task/screen/student/create/responsive/mac_view.dart';
-import 'package:nexteons_internship_task/screen/frame/frame_view.dart';
 
 class CreateStudent extends StatefulWidget {
   const CreateStudent({super.key});
@@ -17,6 +16,9 @@ class CreateStudent extends StatefulWidget {
 class _CreateStudentState extends State<CreateStudent> {
   late DetailController controller;
   final String tag = DateTime.now().toString();
+  /*
+  late is used to handle non-nullable variables that cannot be initialized at the point of declaration
+   */
 
   @override
   void initState() {

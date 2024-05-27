@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexteons_internship_task/model/api_data_grid_model.dart';
 import 'package:nexteons_internship_task/repositary/api_data_grid/data_grid_service.dart';
 import 'package:nexteons_internship_task/utils/constants/app_constants.dart';
+import 'package:nexteons_internship_task/utils/payload/api_body.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiDataGridController extends GetxController {
@@ -19,35 +18,15 @@ class ApiDataGridController extends GetxController {
     isLoading = true.obs;
     Map<String, String> headers = await getApiHeader();
     if (headers.isEmpty) {
-      print("999999999999999999999999 $headers");
+      // print("999999999999999999999999 $headers");
       log("failed to get header");
       return;
     }
-    Map<String, dynamic> payload = {
-      'query': '''
-        query List(\$filterOptions: ListDpiInput!) {
-          DpiRate_List(FilterOptions: \$filterOptions) {
-            list {
-              _name
-              _rate
-              _id
-            }
-            totalCount
-          }
-        }
-      ''',
-      'variables': {
-        "filterOptions": {
-          "branchIds": "6631da5ce9efa0bd84a86852",
-          "limit": -1,
-          "skip": 0,
-          "statusArray": [1]
-        }
-      }
-    };
+    
 
+var payload= Payload.loginPayload;
     try {
-      print("88888888888888888$headers");
+      // print("88888888888888888$headers");
       var response =
           await DataGridService.fetchData(header: headers, data: payload);
       if (response["data"] != null) {
@@ -70,13 +49,13 @@ class ApiDataGridController extends GetxController {
           updates the dpiRateList with a list from the API response, ensuring that the value is always a valid list, even if the response data contains null values at various levels.
            */
         } else {
-          log("No data found in response: ${response['data']["DpiRate_List"]["list"]}");
+          // log("No data found in response: ${response['data']["DpiRate_List"]["list"]}");
         }
       } else {
-        log("Unexpected response structure: $response");
+        // log("Unexpected response structure: $response");
       }
     } catch (e) {
-      log("Error fetching data: $e");
+      // log("Error fetching data: $e");
     } finally {
       isLoading.value = false;
     }
@@ -131,7 +110,7 @@ mutation DPI_Rate_Create(\$createDpiRateInput: CreateDpiRateInput!) {
         "X-Tenant-Id": "RL0582",
         "Authorization": "Bearer $token"
       };
-      log("$token");
+      // log("$token");
     } else {
       log(" ---token not geting from shared prefernce---");
       return {};
