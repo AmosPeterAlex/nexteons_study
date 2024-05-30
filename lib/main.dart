@@ -6,6 +6,7 @@ import 'package:url_strategy/url_strategy.dart';
 // import 'model/model.dart';
 
 RxList<dynamic> students = [].obs;
+//created an empty student list 
 
 void main() {
   setPathUrlStrategy();

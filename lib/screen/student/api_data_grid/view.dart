@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nexteons_internship_task/responsive_layout_builder.dart';
-import 'package:nexteons_internship_task/screen/frame/frame_view.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/controller/api_data_grid_controller.dart';
 import 'package:nexteons_internship_task/screen/student/api_data_grid/responsive/api_data_grid.dart';
 

@@ -36,6 +36,7 @@ final router = GoRouter(
               name: RouteNames.listPage,
               path: '/result',
               builder: (context, state) => ListStudent(),
+              //list page il ninu home il pokenda kond aa ulil edh vane
               routes: [
                 GoRoute(
                   name: RouteNames.homePage,
@@ -44,6 +45,7 @@ final router = GoRouter(
                   builder: (context, state) => CreateStudent(),
                 ),
               ]),
+
           GoRoute(
             name: RouteNames.gridPage,
             path: '/dataGrid',
@@ -62,6 +64,8 @@ final router = GoRouter(
     ),
   ],
 );
+
+//this function is to check whether token is saved in shared prefernces
 
 Future<bool> isTokenAvailable() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
